@@ -1,0 +1,65 @@
+name: Update Latest Release Manifest
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
+  repository_dispatch:
+    types: [release-published]
+
+permissions:
+  contents: write
+
+jobs:
+  update-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout site repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Fetch latest release from Emperor-of-Modkind/emperor-mod-manager
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          curl -fsSL \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            https://api.github.com/repos/Emperor-of-Modkind/emperor-mod-manager/releases/latest \
+            -o /tmp/latest-release-raw.json
+
+      - name: Build data/latest-release.json
+        run: |
+          node scripts/build-release-manifest.mjs \
+            --input /tmp/latest-release-raw.json \
+            --output data/latest-release.json
+
+      - name: Commit updated manifest if release changed
+        run: |
+          if git diff --quiet -- data/latest-release.json; then
+            echo "No changes to data/latest-release.json"
+            exit 0
+          fi
+
+          # Skip commit if only generatedAt changed
+          OLD_TAG=$(git show HEAD:data/latest-release.json 2>/dev/null | node -e "const d = JSON.parse(require('fs').readFileSync(0,'utf8') || '{}'); console.log(d.tag || '');" || true)
+          NEW_TAG=$(node -e "const d = JSON.parse(require('fs').readFileSync('data/latest-release.json','utf8')); console.log(d.tag || '');")
+          OLD_ASSETS=$(git show HEAD:data/latest-release.json 2>/dev/null | node -e "const d = JSON.parse(require('fs').readFileSync(0,'utf8') || '{}'); console.log(JSON.stringify(d.platforms || {}));" || true)
+          NEW_ASSETS=$(node -e "const d = JSON.parse(require('fs').readFileSync('data/latest-release.json','utf8')); console.log(JSON.stringify(d.platforms || {}));")
+
+          if [ "$OLD_TAG" = "$NEW_TAG" ] && [ "$OLD_ASSETS" = "$NEW_ASSETS" ]; then
+            echo "Release tag and assets unchanged ($NEW_TAG); skipping commit."
+            git checkout -- data/latest-release.json
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/latest-release.json
+          git commit -m "chore: update latest release manifest to ${NEW_TAG}"
+          git push

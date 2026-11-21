@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wiki — Emperor Mod Manager</title>
+    <meta
+      name="description"
+      content="User guide for Emperor Mod Manager: initial setup, Nexus and mod.io API keys, managing mods and collections, adding friends over P2P, and troubleshooting."
+    />
+    <link rel="icon" type="image/png" href="./assets/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      (() => {
+        const saved = localStorage.getItem("emm-site-theme");
+        const dark = saved === "dark" || (!saved && matchMedia("(prefers-color-scheme: dark)").matches);
+        if (dark) document.documentElement.setAttribute("data-theme", "dark");
+      })();
+    </script>
+    <link rel="stylesheet" href="./css/theme.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <script type="module" src="./js/nav.js"></script>
+    <script type="module" src="./js/wiki.js"></script>
+  </head>
+  <body>
+    <header class="titlebar">
+      <div class="titlebar-inner">
+        <a class="brand" href="./index.html">
+          <img class="brand-logo" src="./assets/app-logo.png" alt="" width="32" height="32" />
+          <span>Emperor Mod Manager</span>
+        </a>
+
+        <nav class="nav-links" aria-label="Primary" data-nav-links>
+          <a class="nav-link" href="./index.html">Home</a>
+          <a class="nav-link" href="./wiki.html" aria-current="page">Wiki</a>
+          <a class="nav-link" href="./downloads.html">Downloads</a>
+        </nav>
+
+        <div class="titlebar-actions">
+          <a
+            class="icon-btn"
+            href="https://github.com/Emperor-of-Modkind/emperor-mod-manager"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
+          <button type="button" class="icon-btn" data-theme-toggle aria-pressed="false" aria-label="Toggle theme">
+            Dark
+          </button>
+          <button
+            type="button"
+            class="icon-btn menu-toggle"
+            data-menu-toggle
+            aria-expanded="false"
+            aria-label="Toggle navigation menu"
+          >
+            Menu
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <div class="page-header">
+          <span class="eyebrow">User Documentation</span>
+          <h1>Emperor Mod Manager Wiki</h1>
+          <p>
+            Everything you need to set up Emperor, download mods and collections, connect with friends over P2P, and
+            manage your game load order.
+          </p>
+        </div>
+
+        <div class="wiki-layout">
+          <aside class="wiki-sidebar" aria-label="Wiki navigation">
+            <label for="wiki-filter" class="sr-only">Filter wiki sections</label>
+            <input
+              id="wiki-filter"
+              type="search"
+              class="wiki-search"
+              placeholder="Filter topics…"
+              data-wiki-search
+            />
+            <ul class="wiki-toc">
+              <li><a href="#setup" class="is-active">1. Getting Started &amp; Setup</a></li>
+              <li><a href="#downloads-assist">2. Free Downloads &amp; Assist</a></li>
+              <li><a href="#collections">3. Managing Mods &amp; Collections</a></li>
+              <li><a href="#friends">4. Adding Friends &amp; P2P Sharing</a></li>
+              <li><a href="#data-paths">5. Data Locations &amp; Recovery</a></li>
+              <li><a href="#faq">6. Troubleshooting &amp; FAQ</a></li>
+            </ul>
+          </aside>
+
+          <div class="wiki-content">
+            <div class="status-note" data-wiki-empty hidden>
+              No wiki sections matched your filter. Try a different keyword.
+            </div>
+
+            <!-- 1. Setup -->
+            <section class="wiki-section" id="setup">
+              <h2>1. Getting Started &amp; Setup</h2>
+              <p>
+                Emperor Mod Manager runs on <strong>Linux</strong> and <strong>Windows 10+</strong>. After installing
+                from the <a href="./downloads.html">Downloads page</a>, connect your mod catalog accounts and detect
+                your installed games.
+              </p>
+
+              <h3>Connecting your Nexus Mods API Key</h3>
+              <ol>
+                <li>
+                  Sign in to Nexus Mods and open
+                  <a href="https://www.nexusmods.com/users/myaccount?tab=api" target="_blank" rel="noopener noreferrer">
+                    Nexus API Access
+                  </a>.
+                </li>
+                <li>Create or copy your personal API key.</li>
+                <li>Open <strong>Setup</strong> in Emperor Mod Manager and paste your key.</li>
+              </ol>
+              <div class="callout">
+                <strong>Key storage:</strong> Your API key is saved in your operating system keyring whenever available,
+                falling back to the app config directory (restricted to mode <code>0600</code> on Linux).
+              </div>
+
+              <h3>Connecting mod.io (Optional)</h3>
+              <ol>
+                <li>
+                  Open
+                  <a href="https://mod.io/me/access" target="_blank" rel="noopener noreferrer">mod.io Access</a>
+                  and generate or copy an API key.
+                </li>
+                <li>Paste it under <strong>Setup &rarr; mod.io</strong> inside the app.</li>
+                <li>
+                  In <strong>Library &rarr; Catalog &amp; deploy settings</strong>, verify or set the game’s
+                  <strong>mod.io game ID</strong> (many games include a seeded ID automatically).
+                </li>
+              </ol>
+
+              <h3>Detecting &amp; Managing Games</h3>
+              <p>
+                Emperor automatically scans common game libraries:
+              </p>
+              <ul>
+                <li><strong>Linux:</strong> Steam, Heroic, Lutris, and Bottles.</li>
+                <li><strong>Windows:</strong> Steam, Epic Games Launcher, and optional Heroic installs.</li>
+              </ul>
+              <p>
+                Select any detected game in your <strong>Library</strong> to manage it, inspect its deployment method,
+                and start browsing mods across Nexus, Thunderstore, and mod.io from one unified list.
+              </p>
+            </section>
+
+            <!-- 2. Download Assist -->
+            <section class="wiki-section" id="downloads-assist">
+              <h2>2. Free-Account Downloads &amp; Download Assist</h2>
+              <p>
+                <strong>Nexus Premium</strong> accounts enjoy one-click API downloads and automatic batch installs for
+                collections. If you use a <strong>free Nexus account</strong>, Emperor includes built-in
+                <strong>Download Assist</strong>:
+              </p>
+              <ol>
+                <li>Open any mod file and choose <strong>Download Assist</strong>.</li>
+                <li>
+                  Sign in to Nexus Mods inside the assist window the first time and check
+                  <strong>Stay signed in</strong> so future downloads reuse your session.
+                </li>
+                <li>
+                  With <strong>autoclick</strong> enabled (on by default in <strong>Settings</strong>), Download Assist
+                  waits for the free download button and automatically clicks <strong>Mod Manager Download</strong> or
+                  <strong>Slow Download</strong>.
+                </li>
+                <li>
+                  You can also click “Download with manager” (<code>nxm://</code>) links in your browser, or use
+                  <strong>Import mod…</strong> on the Mods tab to import any local <code>.zip</code>, <code>.7z</code>,
+                  <code>.rar</code>, mod file, or extracted folder.
+                </li>
+              </ol>
+              <div class="callout callout-warn">
+                <strong>Session reset:</strong> If your Nexus website login expires or you switch accounts, go to
+                <strong>Settings &rarr; Clear Nexus website session</strong> to sign in fresh.
+              </div>
+            </section>
+
+            <!-- 3. Collections -->
+            <section class="wiki-section" id="collections">
+              <h2>3. Managing Mods &amp; Collections</h2>
+              <p>
+                Emperor makes it easy to organize individual mods into reusable collections, control load order, and
+                install community modpacks.
+              </p>
+
+              <h3>Installing Collections &amp; Modpacks</h3>
+              <ul>
+                <li>
+                  <strong>Nexus Collections:</strong> Browse and install Nexus Collections directly. Premium users
+                  batch-download automatically; free accounts step through each required mod via Download Assist (use
+                  <strong>Cancel</strong> on the status banner anytime to stop).
+                </li>
+                <li>
+                  <strong>Thunderstore Modpacks &amp; Profile Codes:</strong> Install Thunderstore Modpacks or paste an
+                  <strong>r2modman / Gale profile code</strong> to import a full modlist with soft dependency resolution
+                  and pinned versions.
+                </li>
+              </ul>
+
+              <h3>Organizing Load Order &amp; Deploying</h3>
+              <ol>
+                <li>Open your managed game’s <strong>Mods</strong> tab to enable, disable, or reorder staged mods.</li>
+                <li>Drag and drop mods to adjust load priority—mods lower in the order override earlier files.</li>
+                <li>
+                  Click <strong>Deploy</strong> to apply your active load order. Emperor uses fast
+                  <strong>hardlinks</strong> whenever the staging folder and game directory share a drive, and falls
+                  back to file copies across separate drives.
+                </li>
+              </ol>
+
+              <h3>Shareable Mod Links</h3>
+              <p>
+                Click <strong>Copy link</strong> on any mod page to copy an <code>emperor://mod/...</code> URL. Sending
+                that link to another Emperor user opens the exact mod directly in their app (supported for Nexus,
+                Thunderstore, and mod.io).
+              </p>
+            </section>
+
+            <!-- 4. Friends -->
+            <section class="wiki-section" id="friends">
+              <h2>4. Adding Friends &amp; P2P Collection Sharing</h2>
+              <p>
+                Emperor includes a direct peer-to-peer (<strong>P2P</strong>) Friends system so you and your co-op group
+                can share and sync mod collections without needing a central account server.
+              </p>
+
+              <h3>Setting Up Your Social Profile</h3>
+              <ol>
+                <li>Open <strong>Settings &rarr; Social</strong>.</li>
+                <li>Enter your <strong>Display name</strong> and click <strong>Save</strong>.</li>
+                <li>
+                  Optionally click <strong>Choose Picture</strong> to upload an avatar (PNG, JPEG, WebP, or GIF;
+                  automatically resized and shared with connected friends).
+                </li>
+              </ol>
+
+              <h3>Adding a Friend</h3>
+              <ol>
+                <li>Navigate to the <strong>Friends</strong> page in the sidebar.</li>
+                <li>
+                  To invite someone, click <strong>Share Friend Code</strong> to copy your P2P join code and send it to
+                  them.
+                </li>
+                <li>
+                  To add someone else, click <strong>Add Friend</strong>, paste their join code, and click
+                  <strong>Connect</strong>. Emperor connects directly over P2P.
+                </li>
+              </ol>
+
+              <h3>Controlling Collection Visibility</h3>
+              <p>
+                Open the <strong>Sharing</strong> dialog on any collection to choose who can see and sync it:
+              </p>
+              <ul>
+                <li><strong>All friends:</strong> Visible to every connected P2P friend.</li>
+                <li>
+                  <strong>Specific friends:</strong> Pick individual connected friends (with Select all / clear helpers)
+                  who can see and sync that collection.
+                </li>
+                <li><strong>Private:</strong> Hidden from all friends.</li>
+              </ul>
+
+              <h3>Syncing a Friend’s Collection</h3>
+              <p>
+                Click a connected friend on the <strong>Friends</strong> page to browse their shared collections by
+                game. Open a collection to preview its included mods, choose the target managed game, and click
+                <strong>Sync</strong> or <strong>Install</strong> to match their modlist.
+              </p>
+            </section>
+
+            <!-- 5. Data Paths -->
+            <section class="wiki-section" id="data-paths">
+              <h2>5. Data Locations &amp; Mod Recovery</h2>
+              <p>Emperor stores configuration, staged mods, and download caches in standard OS locations:</p>
+              <div class="data-table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Purpose</th>
+                      <th>Linux</th>
+                      <th>Windows</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Config</td>
+                      <td><code>~/.config/emperor-mod-manager/</code></td>
+                      <td><code>%APPDATA%\emperormodmanager\emperor-mod-manager\</code></td>
+                    </tr>
+                    <tr>
+                      <td>Staged mods &amp; load order</td>
+                      <td><code>~/.local/share/emperor-mod-manager/</code></td>
+                      <td><code>%APPDATA%\emperormodmanager\emperor-mod-manager\</code></td>
+                    </tr>
+                    <tr>
+                      <td>Download cache</td>
+                      <td><code>~/.cache/emperor-mod-manager/</code></td>
+                      <td><code>%LOCALAPPDATA%\emperormodmanager\emperor-mod-manager\cache\</code></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <h3>Migrating from Legacy Nexus Manager</h3>
+              <p>
+                If you previously used the legacy Nexus Manager app, Emperor can copy staged game data on startup when
+                the matching folder is empty. You can also open <strong>Settings &rarr; Mod recovery</strong> to scan or
+                rerun recovery, then deploy each recovered game before removing the old data directory.
+              </p>
+            </section>
+
+            <!-- 6. FAQ -->
+            <section class="wiki-section" id="faq">
+              <h2>6. Troubleshooting &amp; FAQ</h2>
+              <div class="faq-list">
+                <details class="faq-item">
+                  <summary>“Download with manager” (nxm://) links aren’t opening Emperor</summary>
+                  <p>
+                    On Windows, install using the <code>_x64-setup.exe</code> installer rather than the standalone
+                    <code>.exe</code> so the <code>nxm://</code> protocol is registered. On Linux, use the Arch
+                    installer, <code>.deb</code> package, or install the <code>.desktop</code> entry from the release
+                    tarball.
+                  </p>
+                </details>
+
+                <details class="faq-item">
+                  <summary>How do I update Emperor Mod Manager?</summary>
+                  <p>
+                    Open <strong>Settings &rarr; Check for updates</strong>. Emperor updates Arch installs via
+                    <code>makepkg</code>/<code>pacman</code>, Debian/Ubuntu installs via <code>apt</code>, replaces
+                    AppImages in place, and updates Windows installs directly from GitHub Releases.
+                  </p>
+                </details>
+
+                <details class="faq-item">
+                  <summary>My friend shows offline or won’t connect over P2P</summary>
+                  <p>
+                    Ensure both you and your friend have Emperor open and have finished starting the P2P node on the
+                    <strong>Friends</strong> page. Use the refresh button on the Friends page if a connection takes a
+                    moment to re-establish.
+                  </p>
+                </details>
+
+                <details class="faq-item">
+                  <summary>Where can I report bugs or request game support?</summary>
+                  <p>
+                    Open an issue on the
+                    <a
+                      href="https://github.com/Emperor-of-Modkind/emperor-mod-manager/issues"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      GitHub Issue Tracker
+                    </a>
+                    with your OS, app version, and game details.
+                  </p>
+                </details>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <span>Emperor Mod Manager &mdash; Licensed under AGPL-3.0-or-later</span>
+        <div class="footer-links">
+          <a href="./index.html">Home</a>
+          <a href="./wiki.html">Wiki</a>
+          <a href="./downloads.html">Downloads</a>
+          <a href="https://github.com/Emperor-of-Modkind/emperor-mod-manager" target="_blank" rel="noopener noreferrer">
+            GitHub Repository
+          </a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

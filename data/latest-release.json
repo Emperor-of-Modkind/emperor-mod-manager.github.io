@@ -1,0 +1,98 @@
+{
+  "repo": "Emperor-of-Modkind/emperor-mod-manager",
+  "tag": "v0.8.5",
+  "name": "v0.8.5",
+  "publishedAt": "2026-11-21T02:26:16Z",
+  "releaseUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/releases/tag/v0.8.5",
+  "body": "**Full Changelog**: https://github.com/Emperor-of-Modkind/emperor-mod-manager/compare/v0.8.4...v0.8.5",
+  "generatedAt": "2026-11-21T02:43:59.771Z",
+  "platforms": {
+    "windows": [
+      {
+        "name": "Emperor.Mod.Manager_0.8.5_x64-setup.exe",
+        "url": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/releases/download/v0.8.5/Emperor.Mod.Manager_0.8.5_x64-setup.exe",
+        "size": 11414011,
+        "digest": "sha256:94c50cccc9aa87ac58efa71d5d6b95ed0ab0d5db8bebf89e10e1a41e8ec3941b",
+        "label": "Windows Installer (x64 NSIS)",
+        "description": "Recommended. Sets up WebView2 if needed and registers nxm:// & emperor:// links.",
+        "recommended": true
+      },
+      {
+        "name": "Emperor.Mod.Manager_0.8.5_x64_en-US.msi",
+        "url": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/releases/download/v0.8.5/Emperor.Mod.Manager_0.8.5_x64_en-US.msi",
+        "size": 17145856,
+        "digest": "sha256:7630db149bfe46bb9dd2f08e0a33eb74608750797b6109c30a709a8a2da109e4",
+        "label": "Windows MSI Package (x64)",
+        "description": "Standard Microsoft Installer package for Windows 10/11.",
+        "recommended": false
+      },
+      {
+        "name": "emperor-mod-manager.exe",
+        "url": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/releases/download/v0.8.5/emperor-mod-manager.exe",
+        "size": 48787968,
+        "digest": "sha256:8fc4ad6f3a3c305e2d8a5784b9a6f81ba9e27035f200897947574f107406c099",
+        "label": "Standalone Executable (.exe)",
+        "description": "Portable binary without installer or protocol handler registration.",
+        "recommended": false
+      }
+    ],
+    "linux": [
+      {
+        "name": "Emperor.Mod.Manager_0.8.5_amd64.AppImage",
+        "url": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/releases/download/v0.8.5/Emperor.Mod.Manager_0.8.5_amd64.AppImage",
+        "size": 100555256,
+        "digest": "sha256:41eb74bb7c0321f1b843355bb9db163d8903a6c544bd735f437443769906a783",
+        "label": "Linux AppImage (x86_64)",
+        "description": "Universal portable package for most Linux distributions. Supports in-app updates.",
+        "recommended": true
+      },
+      {
+        "name": "Emperor.Mod.Manager_0.8.5_amd64.deb",
+        "url": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/releases/download/v0.8.5/Emperor.Mod.Manager_0.8.5_amd64.deb",
+        "size": 23142272,
+        "digest": "sha256:f886546af3e8e98d803a664663c6ffb3f31d3df4fda97c80b91ba2c763c28168",
+        "label": "Debian / Ubuntu Package (.deb)",
+        "description": "Native package for Debian, Ubuntu, Pop!_OS, and Linux Mint.",
+        "recommended": false
+      },
+      {
+        "name": "emperor-mod-manager-0.8.5-x86_64.tar.gz",
+        "url": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/releases/download/v0.8.5/emperor-mod-manager-0.8.5-x86_64.tar.gz",
+        "size": 22580362,
+        "digest": "sha256:bb81c4d42d4392d3b358f6016340618c48b9e38d462d64d97c593fdfc6b60a30",
+        "label": "Linux Tarball (.tar.gz)",
+        "description": "Includes binary, .desktop entry, and application icons.",
+        "recommended": false
+      },
+      {
+        "name": "PKGBUILD",
+        "url": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/releases/download/v0.8.5/PKGBUILD",
+        "size": 1305,
+        "digest": "sha256:4de55290c94f3aeaacb62586b2dfccb5fdad6dec47de0c797388213cbf3abeeb",
+        "label": "Arch Linux PKGBUILD",
+        "description": "Build a pacman package for Arch, CachyOS, EndeavourOS, or Manjaro with makepkg -si.",
+        "recommended": false
+      },
+      {
+        "name": "emperor-mod-manager",
+        "url": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/releases/download/v0.8.5/emperor-mod-manager",
+        "size": 70130056,
+        "digest": "sha256:c1cb15cfedeef27f4145f86339fc2b2fb3fde9d37a1a178983bc13db9db63484",
+        "label": "Standalone Linux Binary",
+        "description": "Raw executable binary (x86_64).",
+        "recommended": false
+      }
+    ]
+  },
+  "checksums": [
+    {
+      "name": "SHA256SUMS",
+      "url": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/releases/download/v0.8.5/SHA256SUMS",
+      "size": 106,
+      "digest": "sha256:c1c2dd6b77cd0fa338b254e504cb1966c68e1e6f01664a85e39872ee3afe1045",
+      "label": "SHA256 Checksums",
+      "description": "Verify integrity of downloaded release files.",
+      "recommended": false
+    }
+  ]
+}

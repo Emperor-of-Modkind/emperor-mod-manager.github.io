@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Emperor Mod Manager — Desktop Mod Manager for Linux &amp; Windows</title>
+    <meta
+      name="description"
+      content="Desktop mod manager for Nexus Mods, Thunderstore, and mod.io on Linux and Windows. Browse, deploy with load order, manage collections, and share modlists with friends over P2P."
+    />
+    <link rel="icon" type="image/png" href="./assets/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      (() => {
+        const saved = localStorage.getItem("emm-site-theme");
+        const dark = saved === "dark" || (!saved && matchMedia("(prefers-color-scheme: dark)").matches);
+        if (dark) document.documentElement.setAttribute("data-theme", "dark");
+      })();
+    </script>
+    <link rel="stylesheet" href="./css/theme.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <script type="module" src="./js/nav.js"></script>
+  </head>
+  <body>
+    <header class="titlebar">
+      <div class="titlebar-inner">
+        <a class="brand" href="./index.html">
+          <img class="brand-logo" src="./assets/app-logo.png" alt="" width="32" height="32" />
+          <span>Emperor Mod Manager</span>
+        </a>
+
+        <nav class="nav-links" aria-label="Primary" data-nav-links>
+          <a class="nav-link" href="./index.html" aria-current="page">Home</a>
+          <a class="nav-link" href="./wiki.html">Wiki</a>
+          <a class="nav-link" href="./downloads.html">Downloads</a>
+        </nav>
+
+        <div class="titlebar-actions">
+          <a
+            class="icon-btn"
+            href="https://github.com/Emperor-of-Modkind/emperor-mod-manager"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
+          <button type="button" class="icon-btn" data-theme-toggle aria-pressed="false" aria-label="Toggle theme">
+            Dark
+          </button>
+          <button
+            type="button"
+            class="icon-btn menu-toggle"
+            data-menu-toggle
+            aria-expanded="false"
+            aria-label="Toggle navigation menu"
+          >
+            Menu
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <section class="sheet hero" aria-labelledby="hero-heading">
+          <div>
+            <span class="eyebrow">Linux &amp; Windows &bull; Open Source (AGPL-3.0)</span>
+            <h1 id="hero-heading">One mod manager for Nexus, Thunderstore, and mod.io.</h1>
+            <p class="hero-lead">
+              Browse, download, and deploy mods with load order across dozens of games on Linux and Windows.
+              Install collections, sync modlists directly with friends over P2P, and launch straight into modded play.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="./downloads.html">Download Latest</a>
+              <a class="btn btn-secondary" href="./wiki.html">Read the Wiki</a>
+            </div>
+            <div class="hero-meta">
+              <span class="pill">Steam &bull; Heroic &bull; Lutris &bull; Bottles &bull; Epic</span>
+              <span class="pill">nxm:// &amp; emperor:// links</span>
+              <span class="pill">P2P Friend Sync</span>
+            </div>
+          </div>
+
+          <aside class="hero-card" aria-label="Supported mod catalogs">
+            <div class="hero-card-head">
+              <img class="hero-card-logo" src="./assets/app-logo.png" alt="Emperor Mod Manager emblem" width="52" height="52" />
+              <div>
+                <h2>Unified Mod Catalog</h2>
+                <p>Search and filter every source from one place</p>
+              </div>
+            </div>
+            <ul class="source-list">
+              <li>
+                <strong>Nexus Mods</strong>
+                <span>Premium API &amp; Free Download Assist</span>
+              </li>
+              <li>
+                <strong>Thunderstore</strong>
+                <span>Modpacks, r2modman/Gale codes &amp; deps</span>
+              </li>
+              <li>
+                <strong>mod.io</strong>
+                <span>Browse, download &amp; soft dependency sync</span>
+              </li>
+              <li>
+                <strong>P2P Friends</strong>
+                <span>Share &amp; sync collections directly</span>
+              </li>
+            </ul>
+          </aside>
+        </section>
+
+        <section class="section" aria-labelledby="features-heading">
+          <div class="section-head">
+            <div>
+              <h2 id="features-heading">Built for real modding workflows</h2>
+              <p>
+                From Unity/BepInEx and Unreal to RE Engine, FromSoftware, Bethesda/Creation Engine, and id Tech—Emperor
+                keeps staging clean and deployment fast.
+              </p>
+            </div>
+            <a class="btn btn-secondary" href="./wiki.html">Explore full guide</a>
+          </div>
+
+          <div class="card-grid">
+            <article class="card">
+              <span class="card-kicker">Unified Browse</span>
+              <h3>All catalogs in one list</h3>
+              <p>
+                Browse Nexus Mods, Thunderstore, and mod.io together in a single interface, or filter by source whenever
+                you need a specific ecosystem.
+              </p>
+            </article>
+
+            <article class="card">
+              <span class="card-kicker">Collections &amp; Modpacks</span>
+              <h3>Batch install with ease</h3>
+              <p>
+                Install Nexus Collections, Thunderstore Modpacks, or paste an r2modman/Gale profile code. Soft
+                dependency resolution keeps versions pinned cleanly.
+              </p>
+            </article>
+
+            <article class="card">
+              <span class="card-kicker">Clean Deployment</span>
+              <h3>Load order &amp; hardlinks</h3>
+              <p>
+                Drag-and-drop load order with instant hardlink deployment on the same drive and automatic copy fallback
+                across separate disks.
+              </p>
+            </article>
+
+            <article class="card">
+              <span class="card-kicker">Free &amp; Premium Nexus</span>
+              <h3>Download Assist built in</h3>
+              <p>
+                Nexus Premium users get one-click API downloads. Free accounts use in-app Download Assist with optional
+                autoclick, <code>nxm://</code> staging, and local archive import.
+              </p>
+            </article>
+
+            <article class="card">
+              <span class="card-kicker">Social &amp; P2P</span>
+              <h3>Share collections with friends</h3>
+              <p>
+                Connect with friends using a P2P join code, control collection privacy (All friends, Specific friends,
+                or Private), and sync modlists together for co-op sessions.
+              </p>
+            </article>
+
+            <article class="card">
+              <span class="card-kicker">Deep Links</span>
+              <h3>Browser &amp; shareable URLs</h3>
+              <p>
+                “Download with manager” (<code>nxm://</code>) links open right in Emperor, and copyable
+                <code>emperor://mod/...</code> URLs let you send exact mods to anyone.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="sheet" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.25rem;">
+            <div>
+              <h2 style="margin: 0 0 0.35rem;">Ready to get started?</h2>
+              <p style="margin: 0; color: var(--muted);">
+                Grab the latest release for Windows or Linux, then follow the quick setup guide in the Wiki.
+              </p>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+              <a class="btn btn-primary" href="./downloads.html">Go to Downloads</a>
+              <a class="btn btn-secondary" href="./wiki.html#setup">Setup Guide</a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <span>Emperor Mod Manager &mdash; Licensed under AGPL-3.0-or-later</span>
+        <div class="footer-links">
+          <a href="./index.html">Home</a>
+          <a href="./wiki.html">Wiki</a>
+          <a href="./downloads.html">Downloads</a>
+          <a href="https://github.com/Emperor-of-Modkind/emperor-mod-manager" target="_blank" rel="noopener noreferrer">
+            GitHub Repository
+          </a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

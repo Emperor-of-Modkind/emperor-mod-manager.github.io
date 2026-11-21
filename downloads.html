@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Downloads — Emperor Mod Manager</title>
+    <meta
+      name="description"
+      content="Download the latest release of Emperor Mod Manager for Windows and Linux, with platform-specific installation instructions."
+    />
+    <link rel="icon" type="image/png" href="./assets/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      (() => {
+        const saved = localStorage.getItem("emm-site-theme");
+        const dark = saved === "dark" || (!saved && matchMedia("(prefers-color-scheme: dark)").matches);
+        if (dark) document.documentElement.setAttribute("data-theme", "dark");
+      })();
+    </script>
+    <link rel="stylesheet" href="./css/theme.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <script type="module" src="./js/nav.js"></script>
+    <script type="module" src="./js/downloads.js"></script>
+  </head>
+  <body>
+    <header class="titlebar">
+      <div class="titlebar-inner">
+        <a class="brand" href="./index.html">
+          <img class="brand-logo" src="./assets/app-logo.png" alt="" width="32" height="32" />
+          <span>Emperor Mod Manager</span>
+        </a>
+
+        <nav class="nav-links" aria-label="Primary" data-nav-links>
+          <a class="nav-link" href="./index.html">Home</a>
+          <a class="nav-link" href="./wiki.html">Wiki</a>
+          <a class="nav-link" href="./downloads.html" aria-current="page">Downloads</a>
+        </nav>
+
+        <div class="titlebar-actions">
+          <a
+            class="icon-btn"
+            href="https://github.com/Emperor-of-Modkind/emperor-mod-manager"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
+          <button type="button" class="icon-btn" data-theme-toggle aria-pressed="false" aria-label="Toggle theme">
+            Dark
+          </button>
+          <button
+            type="button"
+            class="icon-btn menu-toggle"
+            data-menu-toggle
+            aria-expanded="false"
+            aria-label="Toggle navigation menu"
+          >
+            Menu
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <div class="page-header">
+          <span class="eyebrow">Dynamic Release Feed</span>
+          <h1>Download Emperor Mod Manager</h1>
+          <p>
+            Select your operating system below for direct download links from the latest GitHub release and
+            platform-specific installation steps.
+          </p>
+        </div>
+
+        <section class="sheet" aria-label="Latest release downloads">
+          <div class="release-bar">
+            <div class="release-bar-meta">
+              <span class="pill pill-accent">Latest Release</span>
+              <span class="release-version" data-release-version>Loading…</span>
+              <span class="release-date" data-release-date></span>
+            </div>
+            <div class="release-links">
+              <a
+                class="btn btn-secondary"
+                data-checksums-link
+                href="https://github.com/Emperor-of-Modkind/emperor-mod-manager/releases/latest"
+                target="_blank"
+                rel="noopener noreferrer"
+                hidden
+              >
+                SHA256SUMS
+              </a>
+              <a
+                class="btn btn-secondary"
+                data-release-notes-link
+                href="https://github.com/Emperor-of-Modkind/emperor-mod-manager/releases/latest"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View on GitHub
+              </a>
+            </div>
+          </div>
+
+          <div class="platform-tabs-wrap">
+            <div
+              class="platform-tablist"
+              focusgroup="tablist nomemory"
+              role="tablist"
+              aria-label="Select platform"
+              data-platform-tablist
+            >
+              <button
+                type="button"
+                role="tab"
+                id="tab-windows"
+                class="platform-tab"
+                data-platform="windows"
+                aria-selected="true"
+                focusgroupstart
+              >
+                Windows
+              </button>
+              <button
+                type="button"
+                role="tab"
+                id="tab-linux"
+                class="platform-tab"
+                data-platform="linux"
+                aria-selected="false"
+              >
+                Linux
+              </button>
+            </div>
+
+            <div class="platform-panels" data-platform-panels>
+              <!-- Windows Panel -->
+              <div
+                class="platform-panel"
+                role="tabpanel"
+                id="panel-windows"
+                aria-labelledby="tab-windows"
+                data-platform-panel="windows"
+              >
+                <div class="platform-panel-inner">
+                  <div class="asset-list" data-asset-list="windows">
+                    <div class="status-note">Loading Windows release assets…</div>
+                  </div>
+
+                  <div class="instructions-box">
+                    <h2>Windows Installation Instructions</h2>
+                    <p>Requires <strong>Windows 10 or Windows 11 (64-bit)</strong>.</p>
+
+                    <h3>Recommended: NSIS Installer (<code>_x64-setup.exe</code>)</h3>
+                    <ol>
+                      <li>Download the <code>..._x64-setup.exe</code> installer above and run it.</li>
+                      <li>
+                        The installer automatically configures Microsoft Edge WebView2 if it is not already installed.
+                      </li>
+                      <li>
+                        It registers the <code>nxm://</code> and <code>emperor://</code> protocol handlers so “Download
+                        with manager” buttons on Nexus Mods open straight in Emperor.
+                      </li>
+                      <li>
+                        Launch <strong>Emperor Mod Manager</strong> from the Start Menu and complete the initial setup
+                        (see the <a href="./wiki.html#setup">Wiki Setup Guide</a>).
+                      </li>
+                    </ol>
+
+                    <h3>Alternative: MSI Package or Standalone Binary</h3>
+                    <ul>
+                      <li>
+                        <strong>MSI (<code>.msi</code>)</strong>: Standard Windows Installer package suitable for
+                        managed or scripted deployments.
+                      </li>
+                      <li>
+                        <strong>Standalone (<code>emperor-mod-manager.exe</code>)</strong>: Portable executable if you
+                        prefer not to run an installer (note: protocol handlers are not registered automatically).
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Linux Panel -->
+              <div
+                class="platform-panel"
+                role="tabpanel"
+                id="panel-linux"
+                aria-labelledby="tab-linux"
+                data-platform-panel="linux"
+                hidden="until-found"
+              >
+                <div class="platform-panel-inner">
+                  <div class="asset-list" data-asset-list="linux">
+                    <div class="status-note">Loading Linux release assets…</div>
+                  </div>
+
+                  <div class="instructions-box">
+                    <h2>Linux Installation Instructions</h2>
+
+                    <h3>Arch Linux (CachyOS, EndeavourOS, Manjaro)</h3>
+                    <p>
+                      Install via the official script, which builds a <code>pacman</code> package so the app appears in
+                      your desktop menu and <code>nxm://</code> links work immediately (requires
+                      <code>base-devel</code>):
+                    </p>
+                    <div class="code-block">
+                      <button type="button" class="copy-btn" data-copy-target>Copy</button>
+                      <pre><code>curl -fsSL https://raw.githubusercontent.com/Emperor-of-Modkind/emperor-mod-manager/main/scripts/install-arch.sh | bash</code></pre>
+                    </div>
+                    <p>Or build manually from the release <code>PKGBUILD</code>:</p>
+                    <div class="code-block">
+                      <button type="button" class="copy-btn" data-copy-target>Copy</button>
+                      <pre><code>mkdir -p "$HOME/.cache/emperor-mod-manager" &amp;&amp; cd "$HOME/.cache/emperor-mod-manager"
+curl -fsSL -o PKGBUILD https://github.com/Emperor-of-Modkind/emperor-mod-manager/releases/latest/download/PKGBUILD
+makepkg -si</code></pre>
+                    </div>
+                    <p>
+                      After installing, use <strong>Settings &rarr; Check for updates</strong> in-app to build and
+                      install future releases. Uninstall anytime with <code>sudo pacman -R emperor-mod-manager-bin</code>.
+                    </p>
+
+                    <h3>Debian / Ubuntu / Pop!_OS / Mint (<code>.deb</code>)</h3>
+                    <div class="code-block">
+                      <button type="button" class="copy-btn" data-copy-target>Copy</button>
+                      <pre><code>sudo apt install ./Emperor.Mod.Manager_*_amd64.deb</code></pre>
+                    </div>
+
+                    <h3>AppImage (Universal)</h3>
+                    <div class="code-block">
+                      <button type="button" class="copy-btn" data-copy-target>Copy</button>
+                      <pre><code>chmod +x Emperor.Mod.Manager_*_amd64.AppImage
+./Emperor.Mod.Manager_*_amd64.AppImage</code></pre>
+                    </div>
+                    <p>
+                      In-app updates automatically replace the AppImage in place, update <code>.deb</code> installs via
+                      <code>apt</code>, or update user-writable binaries from the release tarball.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <span>Emperor Mod Manager &mdash; Licensed under AGPL-3.0-or-later</span>
+        <div class="footer-links">
+          <a href="./index.html">Home</a>
+          <a href="./wiki.html">Wiki</a>
+          <a href="./downloads.html">Downloads</a>
+          <a href="https://github.com/Emperor-of-Modkind/emperor-mod-manager" target="_blank" rel="noopener noreferrer">
+            GitHub Repository
+          </a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

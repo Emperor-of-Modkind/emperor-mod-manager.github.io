@@ -1,0 +1,88 @@
+/* Emperor Mod Manager — Shared Theme Tokens (synced with emperor-mod-manager/src/App.css) */
+
+:root {
+  color-scheme: light;
+  --bg: #e8dfd2;
+  --bg-2: #f3ebe0;
+  --panel: #fffaf3;
+  --ink: #1c1915;
+  --muted: #5c5348;
+  --line: #cfc1ae;
+  --accent: #0f6a5c;
+  --accent-2: #d35400;
+  --on-accent: #fff;
+  --accent-ink: var(--accent);
+  --accent-hover: color-mix(in srgb, var(--accent) 82%, #fff);
+  --shape-control: 999px;
+  --shape-field: 0.9rem;
+  --shape-sheet: 1.75rem;
+  --surface-control: color-mix(in srgb, var(--ink) 8%, var(--bg));
+  --surface-selected: var(--accent);
+  --focus-ring: 0 0 0 3px color-mix(in srgb, var(--accent) 28%, transparent);
+  --danger: #9b2c2c;
+  --warn: #8a5a00;
+  --ok: #1b6b3a;
+  --input-bg: #fff;
+  --danger-bg: #f8e4e4;
+  --danger-line: #e7bcbc;
+  --ok-bg: #e4f1ec;
+  --ok-line: #b9d7ce;
+  --shadow: 0 10px 30px rgba(40, 30, 15, 0.08);
+  --motion-fast: 220ms;
+  --motion-base: 320ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --badge-bg: rgba(20, 24, 22, 0.78);
+  --badge-ink: #f4efe7;
+  --sidebar-bg: #e4d9ca;
+  --sidebar-ink: #1c1915;
+  --sidebar-muted: #5c5348;
+  --sidebar-line: color-mix(in srgb, var(--sidebar-ink) 14%, transparent);
+  --sidebar-hover: color-mix(in srgb, var(--sidebar-ink) 8%, transparent);
+  --sidebar-active: color-mix(in srgb, var(--accent) 18%, transparent);
+  --code-bg: #221f1b;
+  --code-ink: #f3ebe0;
+  --font-sans: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, "JetBrains Mono", "Cascadia Code", Menlo, Consolas, monospace;
+
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  font-weight: 450;
+  color: var(--ink);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #161a18;
+  --bg-2: #1e2421;
+  --panel: #222925;
+  --ink: #efe9df;
+  --muted: #a8b0aa;
+  --line: #3a443f;
+  --accent: #2a9b88;
+  --accent-2: #e07a2f;
+  --accent-ink: #47bfa9;
+  --accent-hover: color-mix(in srgb, var(--accent) 82%, #fff);
+  --danger: #e08a8a;
+  --warn: #d4a84b;
+  --ok: #6cbc8a;
+  --input-bg: #1a201d;
+  --danger-bg: #3a2424;
+  --danger-line: #6a3c3c;
+  --ok-bg: #1e332c;
+  --ok-line: #35584c;
+  --shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  --badge-bg: rgba(8, 10, 9, 0.82);
+  --badge-ink: #f4efe7;
+  --sidebar-bg: #1a2320;
+  --sidebar-ink: #f4efe7;
+  --sidebar-muted: #aeb8b2;
+  --sidebar-line: rgba(255, 255, 255, 0.08);
+  --sidebar-hover: rgba(255, 255, 255, 0.08);
+  --sidebar-active: rgba(255, 255, 255, 0.12);
+  --code-bg: #111513;
+  --code-ink: #e8dfd2;
+}
