@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Open in Emperor Mod Manager</title>
+    <meta name="description" content="Open this link directly in Emperor Mod Manager." />
+    <meta name="theme-color" content="#c9a24b" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Emperor Mod Manager" />
+    <meta property="og:title" content="Open in Emperor Mod Manager" />
+    <meta
+      property="og:description"
+      content="Click to open this mod or friend invite directly in Emperor Mod Manager."
+    />
+    <meta property="og:url" content="https://emperor-of-modkind.github.io/open/" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Open in Emperor Mod Manager" />
+    <meta
+      name="twitter:description"
+      content="Click to open this mod or friend invite directly in Emperor Mod Manager."
+    />
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #0f1115;
+        --surface: #171a21;
+        --border: #282d38;
+        --text: #eef1f6;
+        --muted: #9aa3b2;
+        --accent: #d4aa4f;
+        --accent-hover: #e2bc67;
+        --accent-ink: #14120c;
+        --danger: #e06c75;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        background: radial-gradient(circle at top, #1a1f2b 0%, var(--bg) 60%);
+        color: var(--text);
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
+          Cantarell, "Helvetica Neue", sans-serif;
+        line-height: 1.5;
+      }
+
+      main {
+        width: 100%;
+        max-width: 480px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 28px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+      }
+
+      .eyebrow {
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin: 0 0 8px;
+      }
+
+      h1 {
+        font-size: 22px;
+        font-weight: 700;
+        margin: 0 0 10px;
+      }
+
+      p {
+        margin: 0 0 18px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .target-box {
+        background: #101319;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 10px 12px;
+        margin-bottom: 20px;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 12.5px;
+        color: var(--text);
+        word-break: break-all;
+      }
+
+      .actions {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 11px 16px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+        cursor: pointer;
+        border: 1px solid transparent;
+        transition: background-color 120ms ease, border-color 120ms ease;
+      }
+
+      .btn-primary {
+        background: var(--accent);
+        color: var(--accent-ink);
+      }
+
+      .btn-primary:hover {
+        background: var(--accent-hover);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: var(--text);
+        border-color: var(--border);
+      }
+
+      .btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.05);
+        border-color: #3a4152;
+      }
+
+      .error-text {
+        color: var(--danger);
+      }
+
+      footer {
+        margin-top: 22px;
+        padding-top: 16px;
+        border-top: 1px solid var(--border);
+        font-size: 13px;
+        color: var(--muted);
+        text-align: center;
+      }
+
+      footer a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
+      }
+
+      [hidden] {
+        display: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="eyebrow">Emperor Mod Manager</p>
+      <h1 id="heading">Opening in Emperor…</h1>
+      <p id="status">
+        Your browser should prompt you to open Emperor Mod Manager. If nothing
+        happens, use the button below.
+      </p>
+
+      <div id="target-box" class="target-box" hidden></div>
+
+      <div class="actions">
+        <a id="open-btn" class="btn btn-primary" href="#" hidden>
+          Open in Emperor
+        </a>
+        <a
+          id="web-btn"
+          class="btn btn-secondary"
+          href="#"
+          rel="noopener noreferrer"
+          hidden
+        ></a>
+        <button id="copy-btn" class="btn btn-secondary" type="button" hidden>
+          Copy emperor:// link
+        </button>
+      </div>
+
+      <footer>
+        Don't have Emperor Mod Manager?
+        <a
+          href="https://github.com/Emperor-of-Modkind/emperor-mod-manager/releases/latest"
+          rel="noopener noreferrer"
+          >Download the latest release</a
+        >
+      </footer>
+    </main>
+
+    <script>
+      (function () {
+        var MAX_U32 = 4294967295;
+        var FRIEND_CODE_RE = /^emperor-friend1:[A-Za-z0-9_-]+$/;
+
+        function rawQueryParam(search, name) {
+          var qs = search.charAt(0) === "?" ? search.slice(1) : search;
+          var pairs = qs.split("&");
+          for (var i = 0; i < pairs.length; i++) {
+            var pair = pairs[i];
+            if (!pair) continue;
+            var eq = pair.indexOf("=");
+            var key = eq === -1 ? pair : pair.slice(0, eq);
+            if (key === name) {
+              return eq === -1 ? "" : pair.slice(eq + 1);
+            }
+          }
+          return null;
+        }
+
+        function safeDecode(raw) {
+          try {
+            return decodeURIComponent(raw);
+          } catch (_) {
+            return null;
+          }
+        }
+
+        function parsePositiveU32(raw) {
+          if (!/^[1-9]\d*$/.test(raw)) return null;
+          var n = Number(raw);
+          if (!Number.isInteger(n) || n <= 0 || n > MAX_U32) return null;
+          return n;
+        }
+
+        function parseTarget(route) {
+          if (!route) return null;
+          var parts = route.split("/").filter(Boolean);
+          if (parts.length < 2) return null;
+
+          var root = parts[0].toLowerCase();
+          if (root === "friend" && parts.length === 2) {
+            var code = safeDecode(parts[1]);
+            if (!code || !FRIEND_CODE_RE.test(code)) return null;
+            return {
+              emperorUrl: "emperor://friend/" + code,
+              summary: "Friend Invite · Emperor Mod Manager",
+              webUrl: null,
+              webLabel: null,
+              copyValue: code,
+              copyLabel: "Copy friend code",
+            };
+          }
+
+          if (root !== "mod") {
+            return null;
+          }
+
+          var source = parts[1].toLowerCase();
+          if (source === "nexus" && parts.length === 4) {
+            var domain = safeDecode(parts[2]);
+            var modId = parsePositiveU32(parts[3]);
+            if (!domain || modId === null) return null;
+            var nexusUrl =
+              "emperor://mod/nexus/" + encodeURIComponent(domain) + "/" + modId;
+            return {
+              emperorUrl: nexusUrl,
+              summary: "Nexus Mods (" + domain + ") · Mod #" + modId,
+              webUrl:
+                "https://www.nexusmods.com/" +
+                encodeURIComponent(domain) +
+                "/mods/" +
+                modId,
+              webLabel: "View on Nexus Mods",
+              copyValue: nexusUrl,
+              copyLabel: "Copy emperor:// link",
+            };
+          }
+
+          if (source === "thunderstore" && parts.length === 5) {
+            var community = safeDecode(parts[2]);
+            var namespace = safeDecode(parts[3]);
+            var pkg = safeDecode(parts[4]);
+            if (!community || !namespace || !pkg) return null;
+            var tsUrl =
+              "emperor://mod/thunderstore/" +
+              encodeURIComponent(community) +
+              "/" +
+              encodeURIComponent(namespace) +
+              "/" +
+              encodeURIComponent(pkg);
+            return {
+              emperorUrl: tsUrl,
+              summary:
+                "Thunderstore (" + community + ") · " + namespace + "-" + pkg,
+              webUrl:
+                "https://thunderstore.io/c/" +
+                encodeURIComponent(community) +
+                "/p/" +
+                encodeURIComponent(namespace) +
+                "/" +
+                encodeURIComponent(pkg) +
+                "/",
+              webLabel: "View on Thunderstore",
+              copyValue: tsUrl,
+              copyLabel: "Copy emperor:// link",
+            };
+          }
+
+          if (source === "modio" && parts.length === 4) {
+            var gameId = parsePositiveU32(parts[2]);
+            var modioModId = parsePositiveU32(parts[3]);
+            if (gameId === null || modioModId === null) return null;
+            var modioUrl = "emperor://mod/modio/" + gameId + "/" + modioModId;
+            return {
+              emperorUrl: modioUrl,
+              summary: "mod.io · Game #" + gameId + " · Mod #" + modioModId,
+              webUrl: null,
+              webLabel: null,
+              copyValue: modioUrl,
+              copyLabel: "Copy emperor:// link",
+            };
+          }
+
+          return null;
+        }
+
+        var route =
+          (rawQueryParam(window.location.search, "to") || "").trim() ||
+          window.location.hash.replace(/^#/, "").trim();
+
+        var parsed = parseTarget(route);
+        var heading = document.getElementById("heading");
+        var status = document.getElementById("status");
+        var targetBox = document.getElementById("target-box");
+        var openBtn = document.getElementById("open-btn");
+        var webBtn = document.getElementById("web-btn");
+        var copyBtn = document.getElementById("copy-btn");
+
+        if (!parsed) {
+          heading.textContent = "Invalid Emperor link";
+          status.textContent =
+            "This link is missing a valid destination and cannot be opened in Emperor Mod Manager.";
+          status.classList.add("error-text");
+          return;
+        }
+
+        document.title = parsed.summary + " — Emperor Mod Manager";
+        targetBox.textContent = parsed.summary;
+        targetBox.hidden = false;
+
+        openBtn.href = parsed.emperorUrl;
+        openBtn.hidden = false;
+
+        if (parsed.webUrl && parsed.webLabel) {
+          webBtn.href = parsed.webUrl;
+          webBtn.textContent = parsed.webLabel;
+          webBtn.hidden = false;
+        }
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          copyBtn.textContent = parsed.copyLabel;
+          copyBtn.hidden = false;
+          copyBtn.addEventListener("click", function () {
+            navigator.clipboard.writeText(parsed.copyValue).then(
+              function () {
+                copyBtn.textContent = "Copied!";
+                window.setTimeout(function () {
+                  copyBtn.textContent = parsed.copyLabel;
+                }, 1800);
+              },
+              function () {
+                copyBtn.textContent = "Copy failed";
+              }
+            );
+          });
+        }
+
+        window.location.href = parsed.emperorUrl;
+      })();
+    </script>
+  </body>
+</html>

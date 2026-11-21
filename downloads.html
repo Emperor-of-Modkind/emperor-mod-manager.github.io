@@ -6,7 +6,7 @@
     <title>Downloads — Emperor Mod Manager</title>
     <meta
       name="description"
-      content="Download the latest release of Emperor Mod Manager for Windows and Linux, with platform-specific installation instructions."
+      content="Download Emperor Mod Manager for Windows and Linux, plus install instructions for each platform."
     />
     <link rel="icon" type="image/png" href="./assets/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -69,11 +69,10 @@
     <main>
       <div class="container">
         <div class="page-header">
-          <span class="eyebrow">Dynamic Release Feed</span>
+          <span class="eyebrow">Releases</span>
           <h1>Download Emperor Mod Manager</h1>
           <p>
-            Select your operating system below for direct download links from the latest GitHub release and
-            platform-specific installation steps.
+            Pick your OS below for direct links to the latest GitHub release and install instructions.
           </p>
         </div>
 
@@ -149,38 +148,39 @@
               >
                 <div class="platform-panel-inner">
                   <div class="asset-list" data-asset-list="windows">
-                    <div class="status-note">Loading Windows release assets…</div>
+                    <div class="status-note">Loading Windows downloads…</div>
                   </div>
 
                   <div class="instructions-box">
-                    <h2>Windows Installation Instructions</h2>
+                    <h2>Installing on Windows</h2>
                     <p>Requires <strong>Windows 10 or Windows 11 (64-bit)</strong>.</p>
 
                     <h3>Recommended: NSIS Installer (<code>_x64-setup.exe</code>)</h3>
                     <ol>
-                      <li>Download the <code>..._x64-setup.exe</code> installer above and run it.</li>
+                      <li>Download and run the <code>..._x64-setup.exe</code> installer above.</li>
                       <li>
-                        The installer automatically configures Microsoft Edge WebView2 if it is not already installed.
+                        If Microsoft Edge WebView2 isn’t installed yet, the installer will set it up for you.
                       </li>
                       <li>
-                        It registers the <code>nxm://</code> and <code>emperor://</code> protocol handlers so “Download
-                        with manager” buttons on Nexus Mods open straight in Emperor.
+                        It also registers <code>nxm://</code> and <code>emperor://</code> links so “Download with
+                        manager” buttons on Nexus Mods open in Emperor.
                       </li>
                       <li>
-                        Launch <strong>Emperor Mod Manager</strong> from the Start Menu and complete the initial setup
-                        (see the <a href="./wiki.html#setup">Wiki Setup Guide</a>).
+                        Open <strong>Emperor Mod Manager</strong> from the Start Menu and run through the first-time
+                        setup (see the <a href="./wiki.html#setup">Wiki Setup Guide</a>).
                       </li>
                     </ol>
 
-                    <h3>Alternative: MSI Package or Standalone Binary</h3>
+                    <h3>Other Windows Options</h3>
                     <ul>
                       <li>
-                        <strong>MSI (<code>.msi</code>)</strong>: Standard Windows Installer package suitable for
-                        managed or scripted deployments.
+                        <strong>MSI (<code>.msi</code>)</strong>: Standard Windows Installer package if you prefer MSI
+                        or scripted installs.
                       </li>
                       <li>
-                        <strong>Standalone (<code>emperor-mod-manager.exe</code>)</strong>: Portable executable if you
-                        prefer not to run an installer (note: protocol handlers are not registered automatically).
+                        <strong>Standalone (<code>emperor-mod-manager.exe</code>)</strong>: Portable binary with no
+                        installer. Note that <code>nxm://</code> and <code>emperor://</code> links won’t be registered
+                        automatically.
                       </li>
                     </ul>
                   </div>
@@ -198,23 +198,22 @@
               >
                 <div class="platform-panel-inner">
                   <div class="asset-list" data-asset-list="linux">
-                    <div class="status-note">Loading Linux release assets…</div>
+                    <div class="status-note">Loading Linux downloads…</div>
                   </div>
 
                   <div class="instructions-box">
-                    <h2>Linux Installation Instructions</h2>
+                    <h2>Installing on Linux</h2>
 
                     <h3>Arch Linux (CachyOS, EndeavourOS, Manjaro)</h3>
                     <p>
-                      Install via the official script, which builds a <code>pacman</code> package so the app appears in
-                      your desktop menu and <code>nxm://</code> links work immediately (requires
-                      <code>base-devel</code>):
+                      Run the install script to build and install a <code>pacman</code> package. This adds Emperor to
+                      your app menu and sets up <code>nxm://</code> links right away (needs <code>base-devel</code>):
                     </p>
                     <div class="code-block">
                       <button type="button" class="copy-btn" data-copy-target>Copy</button>
                       <pre><code>curl -fsSL https://raw.githubusercontent.com/Emperor-of-Modkind/emperor-mod-manager/main/scripts/install-arch.sh | bash</code></pre>
                     </div>
-                    <p>Or build manually from the release <code>PKGBUILD</code>:</p>
+                    <p>Or build it yourself from the release <code>PKGBUILD</code>:</p>
                     <div class="code-block">
                       <button type="button" class="copy-btn" data-copy-target>Copy</button>
                       <pre><code>mkdir -p "$HOME/.cache/emperor-mod-manager" &amp;&amp; cd "$HOME/.cache/emperor-mod-manager"
@@ -222,8 +221,8 @@ curl -fsSL -o PKGBUILD https://github.com/Emperor-of-Modkind/emperor-mod-manager
 makepkg -si</code></pre>
                     </div>
                     <p>
-                      After installing, use <strong>Settings &rarr; Check for updates</strong> in-app to build and
-                      install future releases. Uninstall anytime with <code>sudo pacman -R emperor-mod-manager-bin</code>.
+                      Once installed, you can update from <strong>Settings &rarr; Check for updates</strong> inside the
+                      app. To remove it later, run <code>sudo pacman -R emperor-mod-manager-bin</code>.
                     </p>
 
                     <h3>Debian / Ubuntu / Pop!_OS / Mint (<code>.deb</code>)</h3>
@@ -239,8 +238,8 @@ makepkg -si</code></pre>
 ./Emperor.Mod.Manager_*_amd64.AppImage</code></pre>
                     </div>
                     <p>
-                      In-app updates automatically replace the AppImage in place, update <code>.deb</code> installs via
-                      <code>apt</code>, or update user-writable binaries from the release tarball.
+                      In-app updates replace the AppImage in place, update <code>.deb</code> installs through
+                      <code>apt</code>, or swap out user-writable binaries from the release tarball.
                     </p>
                   </div>
                 </div>

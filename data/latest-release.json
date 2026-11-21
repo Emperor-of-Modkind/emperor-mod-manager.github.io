@@ -14,7 +14,7 @@
         "size": 11414011,
         "digest": "sha256:94c50cccc9aa87ac58efa71d5d6b95ed0ab0d5db8bebf89e10e1a41e8ec3941b",
         "label": "Windows Installer (x64 NSIS)",
-        "description": "Recommended. Sets up WebView2 if needed and registers nxm:// & emperor:// links.",
+        "description": "Recommended. Installs WebView2 if needed and registers nxm:// and emperor:// links.",
         "recommended": true
       },
       {
@@ -23,7 +23,7 @@
         "size": 17145856,
         "digest": "sha256:7630db149bfe46bb9dd2f08e0a33eb74608750797b6109c30a709a8a2da109e4",
         "label": "Windows MSI Package (x64)",
-        "description": "Standard Microsoft Installer package for Windows 10/11.",
+        "description": "Standard Windows Installer (.msi) for Windows 10/11.",
         "recommended": false
       },
       {
@@ -32,7 +32,7 @@
         "size": 48787968,
         "digest": "sha256:8fc4ad6f3a3c305e2d8a5784b9a6f81ba9e27035f200897947574f107406c099",
         "label": "Standalone Executable (.exe)",
-        "description": "Portable binary without installer or protocol handler registration.",
+        "description": "Portable binary with no installer. Doesn't register protocol links.",
         "recommended": false
       }
     ],
@@ -43,7 +43,7 @@
         "size": 100555256,
         "digest": "sha256:41eb74bb7c0321f1b843355bb9db163d8903a6c544bd735f437443769906a783",
         "label": "Linux AppImage (x86_64)",
-        "description": "Universal portable package for most Linux distributions. Supports in-app updates.",
+        "description": "Portable package that runs on most distros. Supports in-app updates.",
         "recommended": true
       },
       {
@@ -52,7 +52,7 @@
         "size": 23142272,
         "digest": "sha256:f886546af3e8e98d803a664663c6ffb3f31d3df4fda97c80b91ba2c763c28168",
         "label": "Debian / Ubuntu Package (.deb)",
-        "description": "Native package for Debian, Ubuntu, Pop!_OS, and Linux Mint.",
+        "description": "Native .deb package for Debian, Ubuntu, Pop!_OS, and Linux Mint.",
         "recommended": false
       },
       {
@@ -61,7 +61,7 @@
         "size": 22580362,
         "digest": "sha256:bb81c4d42d4392d3b358f6016340618c48b9e38d462d64d97c593fdfc6b60a30",
         "label": "Linux Tarball (.tar.gz)",
-        "description": "Includes binary, .desktop entry, and application icons.",
+        "description": "Contains the binary, .desktop file, and icons.",
         "recommended": false
       },
       {
@@ -70,7 +70,7 @@
         "size": 1305,
         "digest": "sha256:4de55290c94f3aeaacb62586b2dfccb5fdad6dec47de0c797388213cbf3abeeb",
         "label": "Arch Linux PKGBUILD",
-        "description": "Build a pacman package for Arch, CachyOS, EndeavourOS, or Manjaro with makepkg -si.",
+        "description": "Build a pacman package for Arch, CachyOS, EndeavourOS, or Manjaro using makepkg -si.",
         "recommended": false
       },
       {
@@ -79,7 +79,7 @@
         "size": 70130056,
         "digest": "sha256:c1cb15cfedeef27f4145f86339fc2b2fb3fde9d37a1a178983bc13db9db63484",
         "label": "Standalone Linux Binary",
-        "description": "Raw executable binary (x86_64).",
+        "description": "Raw x86_64 binary.",
         "recommended": false
       }
     ]
@@ -91,7 +91,7 @@
       "size": 106,
       "digest": "sha256:c1c2dd6b77cd0fa338b254e504cb1966c68e1e6f01664a85e39872ee3afe1045",
       "label": "SHA256 Checksums",
-      "description": "Verify integrity of downloaded release files.",
+      "description": "Verify downloaded files.",
       "recommended": false
     }
   ]

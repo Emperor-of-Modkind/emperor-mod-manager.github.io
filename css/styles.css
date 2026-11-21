@@ -103,7 +103,6 @@ a:hover {
 .brand-logo {
   width: 2rem;
   height: 2rem;
-  border-radius: 0.55rem;
   object-fit: contain;
   display: block;
 }
@@ -333,7 +332,6 @@ main {
 .hero-card-logo {
   width: 3.25rem;
   height: 3.25rem;
-  border-radius: 0.85rem;
   object-fit: contain;
 }
 

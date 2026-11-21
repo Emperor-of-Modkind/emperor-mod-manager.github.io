@@ -42,7 +42,7 @@ export function classifyAsset(asset) {
       item: {
         ...base,
         label: "SHA256 Checksums",
-        description: "Verify integrity of downloaded release files.",
+        description: "Verify downloaded files.",
         recommended: false,
         order: 99,
       },
@@ -56,7 +56,7 @@ export function classifyAsset(asset) {
       item: {
         ...base,
         label: "Windows Installer (x64 NSIS)",
-        description: "Recommended. Sets up WebView2 if needed and registers nxm:// & emperor:// links.",
+        description: "Recommended. Installs WebView2 if needed and registers nxm:// and emperor:// links.",
         recommended: true,
         order: 1,
       },
@@ -68,7 +68,7 @@ export function classifyAsset(asset) {
       item: {
         ...base,
         label: "Windows MSI Package (x64)",
-        description: "Standard Microsoft Installer package for Windows 10/11.",
+        description: "Standard Windows Installer (.msi) for Windows 10/11.",
         recommended: false,
         order: 2,
       },
@@ -80,7 +80,7 @@ export function classifyAsset(asset) {
       item: {
         ...base,
         label: "Standalone Executable (.exe)",
-        description: "Portable binary without installer or protocol handler registration.",
+        description: "Portable binary with no installer. Doesn't register protocol links.",
         recommended: false,
         order: 3,
       },
@@ -94,7 +94,7 @@ export function classifyAsset(asset) {
       item: {
         ...base,
         label: "Linux AppImage (x86_64)",
-        description: "Universal portable package for most Linux distributions. Supports in-app updates.",
+        description: "Portable package that runs on most distros. Supports in-app updates.",
         recommended: true,
         order: 1,
       },
@@ -106,7 +106,7 @@ export function classifyAsset(asset) {
       item: {
         ...base,
         label: "Debian / Ubuntu Package (.deb)",
-        description: "Native package for Debian, Ubuntu, Pop!_OS, and Linux Mint.",
+        description: "Native .deb package for Debian, Ubuntu, Pop!_OS, and Linux Mint.",
         recommended: false,
         order: 2,
       },
@@ -118,7 +118,7 @@ export function classifyAsset(asset) {
       item: {
         ...base,
         label: "Linux Tarball (.tar.gz)",
-        description: "Includes binary, .desktop entry, and application icons.",
+        description: "Contains the binary, .desktop file, and icons.",
         recommended: false,
         order: 3,
       },
@@ -130,7 +130,7 @@ export function classifyAsset(asset) {
       item: {
         ...base,
         label: "Arch Linux PKGBUILD",
-        description: "Build a pacman package for Arch, CachyOS, EndeavourOS, or Manjaro with makepkg -si.",
+        description: "Build a pacman package for Arch, CachyOS, EndeavourOS, or Manjaro using makepkg -si.",
         recommended: false,
         order: 4,
       },
@@ -142,7 +142,7 @@ export function classifyAsset(asset) {
       item: {
         ...base,
         label: "Standalone Linux Binary",
-        description: "Raw executable binary (x86_64).",
+        description: "Raw x86_64 binary.",
         recommended: false,
         order: 5,
       },
