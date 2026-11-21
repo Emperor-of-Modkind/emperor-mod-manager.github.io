@@ -237,6 +237,10 @@
 
         function parseTarget(route) {
           if (!route) return null;
+          if (route.indexOf("/") === -1 && /%2f/i.test(route)) {
+            route = safeDecode(route);
+            if (!route) return null;
+          }
           var parts = route.split("/").filter(Boolean);
           if (parts.length < 2) return null;
 
