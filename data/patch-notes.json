@@ -1,0 +1,1813 @@
+{
+  "repo": "Emperor-of-Modkind/emperor-mod-manager",
+  "generatedAt": "2026-11-21T04:03:44.065Z",
+  "releaseCount": 29,
+  "releases": [
+    {
+      "tag": "v0.8.6",
+      "previousTag": "v0.8.5",
+      "name": "v0.8.6",
+      "headline": "",
+      "publishedAt": "2026-11-21T03:32:29Z",
+      "prerelease": false,
+      "releaseUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/releases/tag/v0.8.6",
+      "compareUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/compare/v0.8.5...v0.8.6",
+      "commitCount": 5,
+      "changeCount": 5,
+      "sections": [
+        {
+          "title": "Highlights",
+          "kind": "other",
+          "items": [
+            {
+              "title": "",
+              "description": "Improved wording.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Fixed logo scaling.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Implement support for deep link redirects.",
+              "subitems": []
+            }
+          ]
+        },
+        {
+          "title": "New Features",
+          "kind": "feature",
+          "items": [
+            {
+              "title": "",
+              "description": "Enable deep-link support.",
+              "subitems": []
+            }
+          ]
+        },
+        {
+          "title": "Other Changes",
+          "kind": "other",
+          "items": [
+            {
+              "title": "",
+              "description": "Delete index.html.",
+              "subitems": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "v0.8.5",
+      "previousTag": "v0.8.4",
+      "name": "v0.8.5",
+      "headline": "",
+      "publishedAt": "2026-11-21T02:26:16Z",
+      "prerelease": false,
+      "releaseUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/releases/tag/v0.8.5",
+      "compareUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/compare/v0.8.4...v0.8.5",
+      "commitCount": 1,
+      "changeCount": 9,
+      "sections": [
+        {
+          "title": "Collection Detail & Share Mod Cards",
+          "kind": "other",
+          "items": [
+            {
+              "title": "Rich grid cards for collection mod lists",
+              "description": "Added a new resolve_share_mod_metadata Tauri command (fetching cover art, author, summary, downloads, and endorsements across Nexus, Thunderstore, and mod.io) and switched CollectionDetailView from a plain list to a virtualized MediaCard grid with search, source filter, and sort controls (order, nameAsc, nameDesc).",
+              "subitems": []
+            },
+            {
+              "title": "Clickable mods inside collections",
+              "description": "Clicking a mod card in a saved or friend collection now opens its mod detail view directly, using the target game when applicable.",
+              "subitems": []
+            },
+            {
+              "title": "Interactive .detail-collections-box styling",
+              "description": "Added hover/focus styling and header/count layout for collection summary boxes.",
+              "subitems": []
+            }
+          ]
+        },
+        {
+          "title": "Friends & Catalog Covers",
+          "kind": "other",
+          "items": [
+            {
+              "title": "Catalog cover & title resolution in FriendsPage",
+              "description": "Friend collection game groups now resolve missing game posters and titles.",
+              "subitems": []
+            },
+            {
+              "title": "Friends UI polish",
+              "description": "Added a \"Friends Collections\" header when viewing a friend's collections.",
+              "subitems": []
+            }
+          ]
+        },
+        {
+          "title": "Layout, Virtualization & Refactoring",
+          "kind": "improvement",
+          "items": [
+            {
+              "title": "Unified scrollable page layout",
+              "description": "Updated App.tsx, ToolsWorkspace, and FriendsPage to keep headers pinned in .page-chrome while scrolling content in .page-scroll, with dedicated scroll refs for Library home, Library detail, and Browse detail.",
+              "subitems": []
+            },
+            {
+              "title": "Extracted MediaCard.tsx",
+              "description": "Moved MediaCard, PlaceholderIcon, and useDecodedImageReveal.",
+              "subitems": []
+            },
+            {
+              "title": "Virtual grid & ResizeObserver improvements",
+              "description": "Added hasMeta support to BrowseVirtualGrid / estimateGridRowHeight for grids without metadata lines, and guarded ResizeObserver usage for environments without it.",
+              "subitems": []
+            }
+          ]
+        },
+        {
+          "title": "Config",
+          "kind": "improvement",
+          "items": [
+            {
+              "title": "Updated Tauri app identifier",
+              "description": "Changed identifier from dev.emperormodmanager.app to dev.emperormodmanager.desktop.",
+              "subitems": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "v0.8.4",
+      "previousTag": "v0.8.3",
+      "name": "v0.8.4",
+      "headline": "",
+      "publishedAt": "2026-11-21T00:12:05Z",
+      "prerelease": false,
+      "releaseUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/releases/tag/v0.8.4",
+      "compareUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/compare/v0.8.3...v0.8.4",
+      "commitCount": 1,
+      "changeCount": 12,
+      "sections": [
+        {
+          "title": "Downloads, Rate Limiting & Mod Importing",
+          "kind": "feature",
+          "items": [
+            {
+              "title": "Shared rate-limit & retry coordinator",
+              "description": "Added RateLimitGate and adaptive backoff/jitter across Nexus, Thunderstore, and mod.io downloads, honoring Retry-After headers and tracking Nexus hourly/daily quota headers.",
+              "subitems": []
+            },
+            {
+              "title": "Nexus low-speed stall detection & mirror failover",
+              "description": "Added sustained low-speed stall detection (<16 KB/s over 20s after a 15s grace period) so throttled transfers abort cleanly and resume via Range on another mirror.",
+              "subitems": []
+            },
+            {
+              "title": "Unified multi-path mod import",
+              "description": "Replaced separate import_mod_archive / import_mod_folder commands with import_mods, supporting importing archives, loose mod files, and extracted folders together.",
+              "subitems": []
+            },
+            {
+              "title": "Download recovery",
+              "description": "Added restart metadata persistence and improved retry/open-mod actions for failed or cancelled downloads in DownloadsWorkspace.",
+              "subitems": []
+            }
+          ]
+        },
+        {
+          "title": "Collections & Mod Management",
+          "kind": "other",
+          "items": [
+            {
+              "title": "Collection integrity checks & repair",
+              "description": "Added check_installed_collections_local, check_collection_integrity, and retry_collection_mods to detect missing or broken mods in installed collections and retry/re-download them.",
+              "subitems": []
+            },
+            {
+              "title": "Installed collection editing",
+              "description": "Added renaming, moving mods between collections, saving local changes back to a collection, and auto-save toggles.",
+              "subitems": []
+            },
+            {
+              "title": "Refactored collection UI",
+              "description": "Extracted CollectionDetailView and CollectionsGameList components, and added thread-safe per-game collection locking.",
+              "subitems": []
+            }
+          ]
+        },
+        {
+          "title": "P2P Friends & Social",
+          "kind": "other",
+          "items": [
+            {
+              "title": "Granular collection sharing",
+              "description": "Replaced simple hidden/visible toggles with per-collection CollectionVisibility modes (private, all friends, or selected friends).",
+              "subitems": []
+            },
+            {
+              "title": "Profiles, avatars & offline mode",
+              "description": "Added profile picture upload/resizing, appear-offline mode, friend avatars with online indicators, and a CheckingFriendUpdatesToast indicator.",
+              "subitems": []
+            },
+            {
+              "title": "Friend collection sync states",
+              "description": "Added get_friend_collection_sync_states to track sync status for joined friend collections.",
+              "subitems": []
+            }
+          ]
+        },
+        {
+          "title": "Banners, Notices & UX",
+          "kind": "improvement",
+          "items": [
+            {
+              "title": "Persistent banners & retry dismissal",
+              "description": "Added banner_persistence (Errors / ErrorsAndWarnings / etc.) with disk persistence, dismiss_banner_on_retry setting, and remaining-timeout pruning across restarts.",
+              "subitems": []
+            },
+            {
+              "title": "Dismissible Wine override notice & bulk-ignore requirements",
+              "description": "Added set_wine_overrides_dismissed so the Proton launch options notice can be dismissed per game, and added an \"Ignore all\" action in RequirementsDialog.",
+              "subitems": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "v0.8.3",
+      "previousTag": "v0.8.2",
+      "name": "v0.8.3",
+      "headline": "",
+      "publishedAt": "2026-11-20T20:55:23Z",
+      "prerelease": false,
+      "releaseUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/releases/tag/v0.8.3",
+      "compareUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/compare/v0.8.2...v0.8.3",
+      "commitCount": 1,
+      "changeCount": 5,
+      "sections": [
+        {
+          "title": "Browse & Filters",
+          "kind": "other",
+          "items": [
+            {
+              "title": "Persisted Browse grid card size",
+              "description": "Added browse_grid_size to app config (120–280 px, default 160) with a set_browse_grid_size Tauri command and debounced saving so the Browse grid size slider persists across restarts.",
+              "subitems": []
+            },
+            {
+              "title": "Hide NSFW toggle in Browse filters",
+              "description": "Added a Hide NSFW switch directly in the Browse filter bar, and filtered the redundant \"nsfw\" tag out of the tag picker list.",
+              "subitems": []
+            }
+          ]
+        },
+        {
+          "title": "P2P Friends",
+          "kind": "other",
+          "items": [
+            {
+              "title": "Automatic presence & keepalive",
+              "description": "Added initial friend sync on startup (after waiting up to 3s for the iroh endpoint to come online) and a 25-second heartbeat_friends loop to keep online/offline status and pending outgoing requests up to date.",
+              "subitems": []
+            },
+            {
+              "title": "Multi-stream incoming connections & reverse sync",
+              "description": "Updated handle_incoming to loop over bidirectional streams on a single connection, trigger a reverse profile pull when a friend accepts or lacks a cached profile, and mark friends offline when dial_and_sync_peer fails or is denied.",
+              "subitems": []
+            },
+            {
+              "title": "Added P2P integration test",
+              "description": "Added two_endpoints_mutual_accept_syncs_both_profiles verifying mutual friend acceptance, online state, and reverse profile/collection syncing between two live iroh endpoints.",
+              "subitems": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "v0.8.2",
+      "previousTag": "v0.8.1",
+      "name": "v0.8.2",
+      "headline": "The friend update",
+      "publishedAt": "2026-11-20T20:16:53Z",
+      "prerelease": false,
+      "releaseUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/releases/tag/v0.8.2",
+      "compareUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/compare/v0.8.1...v0.8.2",
+      "commitCount": 2,
+      "changeCount": 10,
+      "sections": [
+        {
+          "title": "Game Launching & Lifecycle",
+          "kind": "other",
+          "items": [
+            {
+              "title": "Managed game launch & auto-revert",
+              "description": "Replaced direct deploy_mods/purge_mods actions with launch_modded, launch_unmodded, revert_deployment, and close_game. Launching modded deploys mods, spawns the game via Steam, Heroic, or direct executable, monitors running PIDs via sysinfo, and automatically reverts deployed files when the game exits (including reconciling orphaned deployments on app startup).",
+              "subitems": []
+            },
+            {
+              "title": "Per-game launch options & Heroic integration",
+              "description": "Added configurable launch command source (emperor vs launcher), custom environment variables, wrapper commands, launch arguments, and executable overrides, plus Heroic GamesConfig/<appName>.json syncing.",
+              "subitems": []
+            }
+          ]
+        },
+        {
+          "title": "P2P Friends & Collection Sync",
+          "kind": "other",
+          "items": [
+            {
+              "title": "Serverless P2P Friends",
+              "description": "Added an iroh-powered peer-to-peer friends system with join codes (emperor-friend1:...), friend requests/accepts, online status, display names, per-collection visibility toggles, and live-updating collection sharing.",
+              "subitems": []
+            },
+            {
+              "title": "Friend collection sync & share code improvements",
+              "description": "Added join_or_sync_friend_collection, finalize_friend_collection_sync, set_friend_collection_auto_sync, and apply_collection_order_and_selections to sync mod lists, load order, FOMOD selections, and mod options from friends; extended share manifests to round-trip FOMOD and option selections and detect already-saved loadouts.",
+              "subitems": []
+            }
+          ]
+        },
+        {
+          "title": "Game Plugins & Wine Overrides",
+          "kind": "other",
+          "items": [
+            {
+              "title": "Valve game support",
+              "description": "Added plugin support for Valve GoldSrc, Source 1, and Source 2 titles (including Garry's Mod), with root-dir wrapping,.emperor-bak backups, and VAC warnings.",
+              "subitems": []
+            },
+            {
+              "title": "Fixed bin/x64 proxy DLL detection",
+              "description": "Wine_overrides.rs now scans bin/ and bin/x64/ subdirectories in both staged mods and install directories for proxy DLLs (e.g., RED4ext winmm.dll/version.dll).",
+              "subitems": []
+            }
+          ]
+        },
+        {
+          "title": "UI, UX & Performance",
+          "kind": "improvement",
+          "items": [
+            {
+              "title": "Stacked & auto-dismissing status banners",
+              "description": "Banners now stack newest-first for warnings/errors (with deduplication), replace previous green info banners, and support configurable per-kind auto-dismiss timeouts in Settings.",
+              "subitems": []
+            },
+            {
+              "title": "Library & unmanage flow",
+              "description": "Simplified game detail navigation (removed GameDetailTab, moved Tools/Collections/Info/Launch into game modals and a launch menu) and added an unmanage confirmation check that reports portable mods and whether the loadout is already saved.",
+              "subitems": []
+            },
+            {
+              "title": "Scroll & animation performance",
+              "description": "",
+              "subitems": [
+                "Added fast-scroll settling, scroll-position restoration, and card-based frame hydration.",
+                "Replaced Framer Motion layoutId in NavTab/SegmentTab with a custom HighlightGroup FLIP animation.",
+                "Tuned imageLoadQueue.ts to LIFO (pop) with 4 max concurrent loads/decodes, and added useDecodedImageReveal for smoother image fade-ins."
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Assets & Packaging",
+          "kind": "improvement",
+          "items": [
+            {
+              "title": "Updated app icons & local install script",
+              "description": "Updated app icons across public/favicon.png and src-tauri/icons/, updated scripts/install-local.sh to install the 512x512 icon and refresh KDE/GTK icon caches.",
+              "subitems": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "v0.8.1",
+      "previousTag": "v0.8.0",
+      "name": "v0.8.1",
+      "headline": "Performance improvements and cleanup",
+      "publishedAt": "2026-11-20T06:09:23Z",
+      "prerelease": false,
+      "releaseUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/releases/tag/v0.8.1",
+      "compareUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/compare/v0.8.0...v0.8.1",
+      "commitCount": 1,
+      "changeCount": 13,
+      "sections": [
+        {
+          "title": "FOMOD & Mod Staging",
+          "kind": "other",
+          "items": [
+            {
+              "title": "Live FOMOD condition evaluation",
+              "description": "FomodDialog now re-queries the backend as options are toggled so conditional steps, plugin states (Required/Recommended/NotUsable), and flag dependencies update live while preserving valid draft selections.",
+              "subitems": []
+            },
+            {
+              "title": "Fixed FOMOD step flag & visibility leaks",
+              "description": "Normalize_selection and collect_flags now skip hidden steps and propagate step-by-step flags sequentially; SelectAny groups no longer re-seed Recommended options if the user explicitly unchecked them.",
+              "subitems": []
+            },
+            {
+              "title": "Fixed FOMOD updates & mixed-case dirs",
+              "description": "Updating a Nexus, Thunderstore, or mod.io mod to a new file/version now clears stale fomod_selection (while same-file/same-version repairs preserve it) and prompts re-configuration for updated FOMODs; detect_scripted_installer now handles mixed-case Fomod/ directories.",
+              "subitems": []
+            }
+          ]
+        },
+        {
+          "title": "Collections & Catalog Covers",
+          "kind": "other",
+          "items": [
+            {
+              "title": "Improved saved collection grouping & metadata",
+              "description": "Generic-engine collections now match detected games by title, resolve missing titles and posters from Nexus/mod.io catalog lookups, and support renaming, game re-assignment, and code inspection in the detail view.",
+              "subitems": []
+            },
+            {
+              "title": "Pruned stale local cover paths",
+              "description": "Scan_games, list_managed, and resolve_catalog_covers now clear missing local cover_path entries and re-apply resolved catalog posters when a local cover is missing or deferred.",
+              "subitems": []
+            }
+          ]
+        },
+        {
+          "title": "Performance & UI Responsiveness",
+          "kind": "improvement",
+          "items": [
+            {
+              "title": "Tab & navigation performance",
+              "description": "Added ParkedTabGate (skips reconciling inactive tabs), useNavSettledEffect (cancels pending IPC/disk scans on rapid tab switching), TtlTracker (skips redundant refreshes), and createThrottledBatcher (coalesces high-frequency download progress events).",
+              "subitems": []
+            },
+            {
+              "title": "Virtualization & progressive rendering",
+              "description": "Added useChunkedCount, ResultsReveal/useReveal crossfading, useRootRem shared resize store, and non-zero row height caching in BrowseResults, plus content-coordinate scroll sentinel checks and a lower BROWSE_PAGE_CAP (48) to prevent runaway pagination.",
+              "subitems": []
+            },
+            {
+              "title": "Image loading queue",
+              "description": "Added imageLoadQueue to cap concurrent network image loads (6) and cached decodes (8) with a bounded URL cache and timeouts.",
+              "subitems": []
+            },
+            {
+              "title": "Paginated heavy lists & deferred inputs",
+              "description": "Paginated recent/queued downloads, historical Nexus files, tag pickers, and expanded mod groups; deferred grid-size and tag-filter inputs; memoized cards/rows and ToolsWorkspace/GameToolsPanel.",
+              "subitems": []
+            },
+            {
+              "title": "Loading skeletons",
+              "description": "Added skeleton states for tools, mod/collection details, downloads, and inline game stats, plus smoother MotionCard entrance transitions.",
+              "subitems": []
+            }
+          ]
+        },
+        {
+          "title": "Backend, Build & Packaging",
+          "kind": "improvement",
+          "items": [
+            {
+              "title": "Cached game detection for health checks",
+              "description": "AppState now caches detected_games from scan_games (and runs scan_games asynchronously via blocking) so get_game_health reuses the cached scan instead of rescanning disk.",
+              "subitems": []
+            },
+            {
+              "title": "Code cleanup",
+              "description": "Removed unused helpers (find_layer_library, profile_mut, set_game_tool_state, linux_accent/kde_accent_only, FoseVersion, unused order_locks) and gated test-only/Windows-only items to eliminate dead-code warnings.",
+              "subitems": []
+            },
+            {
+              "title": "Linux local install script & Vite chunking",
+              "description": "Added scripts/install-local.sh (npm run install:local) to build, install the binary/desktop entry/icons to ~/.local, and register nxm:// and emperor:// handlers, and configured Vite manualChunks for react-vendor, motion, fontawesome, tauri, and vendor.",
+              "subitems": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "v0.8.0",
+      "previousTag": "v0.7.5",
+      "name": "v0.8.0",
+      "headline": "",
+      "publishedAt": "2026-11-20T02:15:22Z",
+      "prerelease": false,
+      "releaseUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/releases/tag/v0.8.0",
+      "compareUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/compare/v0.7.5...v0.8.0",
+      "commitCount": 1,
+      "changeCount": 7,
+      "sections": [
+        {
+          "title": "Highlights",
+          "kind": "other",
+          "items": [
+            {
+              "title": "id Tech",
+              "description": "Support for DOOM (2016), Eternal, The Dark Ages, and the Wolfenstein reboot titles (New Order, Old Blood, II, Youngblood), with loader preflight and the right deploy layout per game.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Epic Games Launcher installs are detected on Windows from launcher manifests.",
+              "subitems": []
+            },
+            {
+              "title": "Title matching treats spaced hyphens/dashes/colons as word breaks (Doom - The Dark Ages ≈ DOOM",
+              "description": "The Dark Ages), while hyphens inside a word stay put.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Thunderstore browse uses the chunked listing index with If-Modified-Since / 304, a compact browse cache, and per-community load gates for faster, lighter refreshes.",
+              "subitems": []
+            },
+            {
+              "title": "Nexus unavailable mods",
+              "description": "Hidden or removed mods are detected from the API/page and shown with a clear notice; the installed copy is left alone.",
+              "subitems": []
+            },
+            {
+              "title": "FOMOD",
+              "description": "Configure/Deploy can walk a queue of installers; plugin images resolve Windows path separators and case-only mismatches on Linux; Fomod vs fomod folders are found either way.",
+              "subitems": []
+            },
+            {
+              "title": "UI",
+              "description": "Browse and staged-mod skeletons, throbbers, source marks on cards, accent text contrast from the OS theme, animated Settings sections, a “checking for updates” toast, and smoother staged-mod drag. Linux in-app update relaunch waits for the old process so single-instance does not block.",
+              "subitems": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "v0.7.5",
+      "previousTag": "v0.7.4",
+      "name": "v0.7.5",
+      "headline": "",
+      "publishedAt": "2026-11-19T21:24:05Z",
+      "prerelease": false,
+      "releaseUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/releases/tag/v0.7.5",
+      "compareUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/compare/v0.7.4...v0.7.5",
+      "commitCount": 1,
+      "changeCount": 4,
+      "sections": [
+        {
+          "title": "Highlights",
+          "kind": "other",
+          "items": [
+            {
+              "title": "Library posters",
+              "description": "Steam prefers portrait library art (including hashed cache and userdata grid). Heroic uses store posters instead of square icons. Games without a local poster get a Nexus tile (or mod.io logo). Covers and icons are stored separately so an icon does not block a real poster. Managed covers refresh on scan; CSP allows GOG / Epic / SteamGridDB images. Library cards load covers eagerly so WebView2 does not leave them blank.",
+              "subitems": []
+            },
+            {
+              "title": "Steam shortcuts",
+              "description": "Non-Steam games added as Steam shortcuts get an install path from shortcuts.vdf, so Unity / Unreal detection and manage can run.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "FOMOD deploy keeps the original destination casing (e.g. AudioXL), so case-sensitive paths are not folded incorrectly.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Share grouping prefers the saved game title when matching generic BepInEx / Unreal collections.",
+              "subitems": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "v0.7.4",
+      "previousTag": "v0.7.3",
+      "name": "v0.7.4",
+      "headline": "",
+      "publishedAt": "2026-11-19T16:04:46Z",
+      "prerelease": false,
+      "releaseUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/releases/tag/v0.7.4",
+      "compareUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/compare/v0.7.3...v0.7.4",
+      "commitCount": 1,
+      "changeCount": 5,
+      "sections": [
+        {
+          "title": "Highlights",
+          "kind": "other",
+          "items": [
+            {
+              "title": "",
+              "description": "Share codes store the game title and Unreal project_name, so saved collections label and group generic BepInEx / Unreal games by the real title instead of collapsing into one “bepinex” / “unreal” bucket.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Import Emperor share asks whether to add the code to Collections before installing (skipped if it is already saved).",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Collections → Import paste or open a.emperor-share / text file and save it without installing yet.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Thunderstore version picker sits in the detail action row next to Install.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "CSP allows Thunderstore ccdn and *.modcdn.io images.",
+              "subitems": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "v0.7.3",
+      "previousTag": "v0.7.2",
+      "name": "v0.7.3",
+      "headline": "",
+      "publishedAt": "2026-11-18T23:42:04Z",
+      "prerelease": false,
+      "releaseUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/releases/tag/v0.7.3",
+      "compareUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/compare/v0.7.2...v0.7.3",
+      "commitCount": 1,
+      "changeCount": 4,
+      "sections": [
+        {
+          "title": "Highlights",
+          "kind": "other",
+          "items": [
+            {
+              "title": "Thunderstore deps match r2modman/Gale",
+              "description": "Dependency versions are minimum floors; install picks the newest published release that still satisfies the highest floor. Soft dependency cycles no longer abort the whole install (fixes RoR2 BepInExPack ↔ RoR2BepInExPack).",
+              "subitems": []
+            },
+            {
+              "title": "Risk of Rain 2 BepInEx",
+              "description": "Deploy rewrites plugins/RoR2BepInExPack to plugins/RiskofThunder-RoR2BepInExPack so the forked Preloader does not delete Newtonsoft.Json and the plugin on launch. Preflight and log diagnosis warn if the pruned folder is still present.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Thunderstore profile import returns staging warnings instead of only a bare success.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Sidebar Back appears when history can go back; detail pages use an accent-styled back control.",
+              "subitems": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "v0.7.2",
+      "previousTag": "v0.7.1",
+      "name": "v0.7.2",
+      "headline": "",
+      "publishedAt": "2026-11-18T01:04:27Z",
+      "prerelease": false,
+      "releaseUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/releases/tag/v0.7.2",
+      "compareUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/compare/v0.7.1...v0.7.2",
+      "commitCount": 1,
+      "changeCount": 2,
+      "sections": [
+        {
+          "title": "Highlights",
+          "kind": "other",
+          "items": [
+            {
+              "title": "Download Assist docking",
+              "description": "When Install is set to stay on the current tab, Assist measures and paints into a sidebar host instead of flashing at the top-left before the Downloads panel exists. Overlay show waits until real host bounds are synced (tiny/empty rects are ignored).",
+              "subitems": []
+            },
+            {
+              "title": "Delete saved collection",
+              "description": "Removing a saved share also drops matching Emperor “installed collection” records across managed games, while leaving staged mods and their folders in place.",
+              "subitems": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "v0.7.1",
+      "previousTag": "v0.7.0",
+      "name": "v0.7.1",
+      "headline": "The FOMOD update",
+      "publishedAt": "2026-11-17T23:27:47Z",
+      "prerelease": false,
+      "releaseUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/releases/tag/v0.7.1",
+      "compareUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/compare/v0.7.0...v0.7.1",
+      "commitCount": 1,
+      "changeCount": 1,
+      "sections": [
+        {
+          "title": "Highlights",
+          "kind": "other",
+          "items": [
+            {
+              "title": "",
+              "description": "Implemented FOMOD installer.",
+              "subitems": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "v0.7.0",
+      "previousTag": "v0.6.7",
+      "name": "v0.7.0",
+      "headline": "",
+      "publishedAt": "2026-11-17T21:34:43Z",
+      "prerelease": false,
+      "releaseUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/releases/tag/v0.7.0",
+      "compareUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/compare/v0.6.7...v0.7.0",
+      "commitCount": 1,
+      "changeCount": 6,
+      "sections": [
+        {
+          "title": "Highlights",
+          "kind": "other",
+          "items": [
+            {
+              "title": "Appearance",
+              "description": "Theme style is Brand, App, or System. App uses a monochrome Fluent-like palette plus a chosen accent. System reads OS colors (Windows registry; Linux GTK or Qt, with a KDE default and a backend toggle). Accent swatches live in Settings.",
+              "subitems": []
+            },
+            {
+              "title": "Browse by author",
+              "description": "Type @name in search for Nexus uploader / Thunderstore owner filtering, with autocomplete suggestions.",
+              "subitems": []
+            },
+            {
+              "title": "Drag-and-drop load order",
+              "description": "Long-press a staged mod to reorder within enabled or disabled groups; ↑↓ still work.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Saved collections are grouped by game, with covers when a matching managed title exists. Shares store the game version at export; Collections can warn when that version does not match the install.",
+              "subitems": []
+            },
+            {
+              "title": "Tools",
+              "description": "LSFG / AutoHDR settings open in dialogs; cards show clearer install status badges.",
+              "subitems": []
+            },
+            {
+              "title": "Settings use collapsible sections",
+              "description": "Font Awesome icons throughout the chrome.",
+              "subitems": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "v0.6.7",
+      "previousTag": "v0.6.6",
+      "name": "v0.6.7",
+      "headline": "",
+      "publishedAt": "2026-11-17T19:16:55Z",
+      "prerelease": false,
+      "releaseUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/releases/tag/v0.6.7",
+      "compareUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/compare/v0.6.6...v0.6.7",
+      "commitCount": 1,
+      "changeCount": 3,
+      "sections": [
+        {
+          "title": "Highlights",
+          "kind": "other",
+          "items": [
+            {
+              "title": "007 First Light",
+              "description": "Mods deploy as.rpkg files under Runtime/. Deploy syncs @include lines in packagedefinition.txt (decrypt/re-encrypt XTEA when needed) and keeps a.emperor-bak backup.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Catalog matching for Unreal / BepInEx games. Adding a generic game opens a match dialog with ranked Nexus, Thunderstore, and mod.io suggestions. Near-ties are flagged as ambiguous. Edition/year noise is stripped so titles like “Deluxe Edition (2024)” still match. Cards show Ready / Review / Enter IDs.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Load-order reorder fix. ↑↓ moves by each mod’s order value, not the filtered list index, so reordering stays correct when filters are clear.",
+              "subitems": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "v0.6.6",
+      "previousTag": "v0.6.5",
+      "name": "v0.6.6",
+      "headline": "Init deep-link framework",
+      "publishedAt": "2026-11-13T00:52:36Z",
+      "prerelease": false,
+      "releaseUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/releases/tag/v0.6.6",
+      "compareUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/compare/v0.6.5...v0.6.6",
+      "commitCount": 1,
+      "changeCount": 3,
+      "sections": [
+        {
+          "title": "Highlights",
+          "kind": "other",
+          "items": [
+            {
+              "title": "Shareable mod links",
+              "description": "Mod detail has Copy link, which copies an emperor://mod/... URL for Nexus, Thunderstore, or mod.io.",
+              "subitems": []
+            },
+            {
+              "title": "Open those links in Emperor",
+              "description": "The OS registers the emperor scheme alongside nxm. Opening a link focuses the existing app (single-instance) and opens that mod for the matching managed game. Cold starts queue the link until the UI is ready.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Sparse deep-link hits are filled in from catalog detail after open (name, image, summary, and related fields).",
+              "subitems": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "v0.6.5",
+      "previousTag": "v0.6.4",
+      "name": "v0.6.5",
+      "headline": "",
+      "publishedAt": "2026-11-10T05:09:40Z",
+      "prerelease": false,
+      "releaseUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/releases/tag/v0.6.5",
+      "compareUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/compare/v0.6.4...v0.6.5",
+      "commitCount": 1,
+      "changeCount": 5,
+      "sections": [
+        {
+          "title": "Highlights",
+          "kind": "other",
+          "items": [
+            {
+              "title": "Share as file",
+              "description": "Export/import loadouts via.emperor-share (or plain text) so Discord and other chat apps do not mangle the paste. Soft size warning drops to ~2 KB, with a clearer “send a file” hint.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Share decode strips BOM and whitespace wrapping, and damaged/truncated pastes get a Discord/file-oriented error instead of a raw inflate failure.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Exporting a share also records it as an Emperor share collection (without marking members as owned by that collection, so uninstalling the share does not wipe the loadout).",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Collection chips on staged mods; click to filter. Search matches collection names. Filter option for mods in no collection. Installed collections show install date and a clearer source label.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Installed file pills on the Nexus files list for file ids already staged.",
+              "subitems": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "v0.6.4",
+      "previousTag": "v0.6.3",
+      "name": "v0.6.4",
+      "headline": "",
+      "publishedAt": "2026-11-04T18:16:05Z",
+      "prerelease": false,
+      "releaseUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/releases/tag/v0.6.4",
+      "compareUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/compare/v0.6.3...v0.6.4",
+      "commitCount": 2,
+      "changeCount": 5,
+      "sections": [
+        {
+          "title": "Highlights",
+          "kind": "other",
+          "items": [
+            {
+              "title": "",
+              "description": "Windows in-app update runs the NSIS installer silently with relaunch (/S /R) instead of opening the wizard.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Nexus file descriptions show on the files list and in Quick Install when Nexus provides them.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Files with no category are treated as archived/old, so they stay collapsed and are not picked as the main install file.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Main-file detection no longer treats an empty category as “main” for update checks.",
+              "subitems": []
+            }
+          ]
+        },
+        {
+          "title": "Improvements",
+          "kind": "improvement",
+          "items": [
+            {
+              "title": "",
+              "description": "Update README.md.",
+              "subitems": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "v0.6.3",
+      "previousTag": "v0.6.2",
+      "name": "v0.6.3",
+      "headline": "",
+      "publishedAt": "2026-11-02T15:03:47Z",
+      "prerelease": false,
+      "releaseUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/releases/tag/v0.6.3",
+      "compareUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/compare/v0.6.2...v0.6.3",
+      "commitCount": 1,
+      "changeCount": 4,
+      "sections": [
+        {
+          "title": "Highlights",
+          "kind": "other",
+          "items": [
+            {
+              "title": "",
+              "description": "Nexus website login is more reliable. Session cookies are checked on both www.nexusmods.com and users.nexusmods.com, and the watcher runs for the whole login window (not a short burst).",
+              "subitems": []
+            },
+            {
+              "title": "Manual confirm",
+              "description": "The login dialog has I've signed in / Cancel. Confirm uses the same session-cookie check as auto-detect and reports a clear error if sign-in is not finished yet.",
+              "subitems": []
+            },
+            {
+              "title": "No orphan login webview",
+              "description": "Closing the modal while open is still in flight (or after cancel) tears down the native assist webview instead of leaving it attached.",
+              "subitems": []
+            },
+            {
+              "title": "Login host layout",
+              "description": "The dashed host area no longer forces a huge min-height, so the modal sizes more cleanly.",
+              "subitems": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "v0.6.2",
+      "previousTag": "v0.6.0",
+      "name": "v0.6.2",
+      "headline": "",
+      "publishedAt": "2026-11-02T01:20:21Z",
+      "prerelease": false,
+      "releaseUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/releases/tag/v0.6.2",
+      "compareUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/compare/v0.6.0...v0.6.2",
+      "commitCount": 1,
+      "changeCount": 10,
+      "sections": [
+        {
+          "title": "Highlights",
+          "kind": "other",
+          "items": [
+            {
+              "title": "Import folder",
+              "description": "The mods page can stage a folder you already have on disk. Each top-level.zip,.7z, or.rar becomes its own mod. Loose files and folders in that directory are copied together as one mod, named after the folder. Hidden files and desktop.ini / Thumbs.db are skipped. The source folder stays where it is. The game install and the staging folder are refused. A failed archive is reported, and the rest still import.",
+              "subitems": []
+            },
+            {
+              "title": "Browse results are virtualized",
+              "description": "Mod and collection grids and lists only mount the rows on screen, so long result sets scroll without building every card. Those cards skip the enter animation and decode images asynchronously.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Euro Truck Simulator 2 and American Truck Simulator..scs files and unpacked mod folders deploy to the user mod directory (Documents/<Game>/mod on Windows/Proton, ~/.local/share/<Game>/mod on native Linux). Enable them in the in-game Mod Manager — Emperor load order does not set SCS priority.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "No Man’s Sky merge mods (e.g. Absolute Flight). Binaries/winmm.dll deploys to the install root, not under GAMEDATA/MODS. Deploy can fix Steam launch options to WINEDLLOVERRIDES=\"winmm=n,b\" (not winmm=n). Warns if Disable All Mods is on, or if a leftover GAMEDATA/MODS/Binaries folder remains from an older deploy.",
+              "subitems": []
+            },
+            {
+              "title": "Wine / Proton overrides",
+              "description": "Shared winmm handling for NMS and CONTROL Resonant. winmm=n alone is treated as wrong for proxy DLLs; winmm=n,b is required. Install and staging scans include NMS Binaries/.",
+              "subitems": []
+            },
+            {
+              "title": "Import folder. Stage a folder from disk",
+              "description": "Each top-level.zip /.7z /.rar becomes its own mod; loose files and folders are copied together as one. Hidden/junk files are skipped. Game install and staging dirs are refused.",
+              "subitems": []
+            },
+            {
+              "title": "Browse virtualization",
+              "description": "Mod and collection grids/lists only render on-screen rows for smoother scrolling of large result sets.",
+              "subitems": []
+            },
+            {
+              "title": "In-app navigation history",
+              "description": "Mouse back/forward (buttons 3/4) moves through tabs and detail views after setup is finished.",
+              "subitems": []
+            },
+            {
+              "title": "Update toast",
+              "description": "When a newer release is available, a dismissible toast offers Update / Open release / Later outside Settings and Setup.",
+              "subitems": []
+            },
+            {
+              "title": "App branding",
+              "description": "New app icon, logo mark in the header, and favicon across desktop, web, Android, and iOS icon sets.",
+              "subitems": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "v0.6.0",
+      "previousTag": "v0.5.3",
+      "name": "v0.6.0",
+      "headline": "",
+      "publishedAt": "2026-10-23T04:51:29Z",
+      "prerelease": false,
+      "releaseUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/releases/tag/v0.6.0",
+      "compareUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/compare/v0.5.3...v0.6.0",
+      "commitCount": 4,
+      "changeCount": 19,
+      "sections": [
+        {
+          "title": "Highlights",
+          "kind": "other",
+          "items": [
+            {
+              "title": "",
+              "description": "Fix downloadassist regression.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "BepInEx installs itself on deploy when the game does not already have it. Known titles use their Thunderstore pack; others get BepInEx 5.4.23.5 (Mono) or 6.0.0-pre.2 (IL2CPP), cached under the tools folder. Schedule I is skipped. A pack you already staged is left to deploy as usual.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Chef RPG is a supported title. A generic Unity install whose exe is Chef RPG.exe is treated as Chef RPG. Staff downloads replace UnassignedStaffData.dat in the newest save slot and keep a .bak.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Other Unity games can be added from detection, with optional Nexus, Thunderstore, and mod.io ids, the same way Unreal games are.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "FromSoftware deploy installs a missing mod loader before linking files, and can open Download Assist for that download.",
+              "subitems": []
+            },
+            {
+              "title": "Proton launch options",
+              "description": "If an injector DLL (winhttp, dinput8, version, and similar) is in the install or an enabled mod and Steam options do not load it natively, the mods page shows the required WINEDLLOVERRIDES line, with Copy and Set in Steam. A dll,n,b typo is called out. Plugin folders are not treated as injectors.",
+              "subitems": []
+            },
+            {
+              "title": "Game version warnings only fire when a mod names a different compatibility line than the install",
+              "description": "Skyrim SE (1.5) vs AE (1.6), and Fallout 4 old-gen vs next-gen. The same line at a different patch, a missing tag, or the mod’s own version stays quiet. Tags such as AE and next-gen count, including in the file name. Browse filters for those two games only list those lines.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Requirements can be ignored per game, then restored from Ignored requirements.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Download Assist stays hidden through about:blank and still navigates while the overlay is hidden, including off the Downloads tab. On Linux the hidden WebKit view no longer takes mouse clicks.",
+              "subitems": []
+            },
+            {
+              "title": "UI",
+              "description": "IBM Plex from Google Fonts is replaced by a bundled DM Sans. Tabs, banners, and dialogs animate, and reduced-motion is respected. Dialog close no longer rebinds on every render. The image carousel reloads when the slide URL changes.",
+              "subitems": []
+            },
+            {
+              "title": "First-run setup",
+              "description": "A new install stays on Setup until a Nexus API key is saved and the Nexus website sign-in finishes (Stay signed in). Both are required, including for Premium. mod.io stays optional. Existing installs that already have an API key skip this. Clearing the website session clears the saved sign-in.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "In-app updates follow how the app was installed. Pacman builds the release with makepkg and installs it (needs base-devel, asks for a password once). A .deb updates with apt, an AppImage is replaced in place, a user-writable copy is replaced from the release tarball, and Windows runs the NSIS installer.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "SMAPI installs itself on Stardew deploy when it is missing. The matching Windows or Linux bundle is copied from the official installer zip, so a Proton game does not get the native Linux build. A SMAPI pack you already staged is left to deploy as usual.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Nexus mod search matches both the full name and the name tokens, so a query like SMAPI finds SMAPI - Stardew Modding API. A game-version tag still has to match as well.",
+              "subitems": []
+            },
+            {
+              "title": "Requirements",
+              "description": "An off-site row whose URL is a Nexus mod page becomes a normal download. A game-version warning can be ignored, the same way a missing requirement can.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Steam launch options keep a single %command% when the existing options already name an exe, so a SMAPI path is not joined onto a second one.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Download Assist on Linux keeps punching the hidden WebKit windows out of hit testing, including ones created later, so the overlay does not take clicks from the main window. The visible panel is raised above the UI.",
+              "subitems": []
+            },
+            {
+              "title": "Motion",
+              "description": "Tabs, dialogs, banners, and the image carousel animate with the Motion library. Reduced motion turns that off.",
+              "subitems": []
+            }
+          ]
+        },
+        {
+          "title": "Other Changes",
+          "kind": "other",
+          "items": [
+            {
+              "title": "",
+              "description": "Hotfix platform gating.",
+              "subitems": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "v0.5.3",
+      "previousTag": "v0.5.2",
+      "name": "v0.5.3",
+      "headline": "",
+      "publishedAt": "2026-10-21T22:10:43Z",
+      "prerelease": false,
+      "releaseUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/releases/tag/v0.5.3",
+      "compareUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/compare/v0.5.2...v0.5.3",
+      "commitCount": 5,
+      "changeCount": 14,
+      "sections": [
+        {
+          "title": "Highlights",
+          "kind": "other",
+          "items": [
+            {
+              "title": "Project Zomboid",
+              "description": "Mods deploy to the user Zomboid/mods folder (~/Zomboid, %USERPROFILE%\\Zomboid, or Proton compatdata/108600). Build 42 layouts (common/ or a version folder) are kept, enabled ids are merged into mods/default.txt, Build 41-only packs are warned about, and workshop.txt is skipped.",
+              "subitems": []
+            },
+            {
+              "title": "Loader log check",
+              "description": "A Check logs button reads the latest loader logs and shows findings, a log excerpt, Copy report, and Open log. Covers BepInEx, SMAPI, MelonLoader, REFramework, UE4SS, SKSE/F4SE/SFSE/OBSE (including crash logs, plugin logs, Papyrus, and dumps), FromSoftware, CONTROL Resonant, Dressmaker, Unity Player.log, and Project Zomboid console.txt.",
+              "subitems": []
+            },
+            {
+              "title": "Game version warnings",
+              "description": "The installed version is read from the game executable (Proton included) and compared with Nexus version tags and collection versions. Mismatches show on the requirements strip. The version can be overridden on the mods toolbar, and the warning can be turned off in Settings.",
+              "subitems": []
+            },
+            {
+              "title": "Browse filter",
+              "description": "The mods Game version filter uses Nexus tags, since the mods search API has no game-version field.",
+              "subitems": []
+            },
+            {
+              "title": "Requirements",
+              "description": "A requirement that is already staged is no longer offered as another download. A staged requirement that is disabled is called out instead.",
+              "subitems": []
+            },
+            {
+              "title": "Download Assist. Clicks stay on the real download control for the requested file",
+              "description": "Hidden controls, site chrome, and Vortex/history/app pages are ignored, and the matching download-history row is used.",
+              "subitems": []
+            },
+            {
+              "title": "App log",
+              "description": "The manager writes a rotating emperor.log, which diagnosis reports use on Windows where the GUI build drops stderr.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Open in folder now reveals the file in the file manager.",
+              "subitems": []
+            }
+          ]
+        },
+        {
+          "title": "New Features",
+          "kind": "feature",
+          "items": [
+            {
+              "title": "",
+              "description": "Added log in prompt from settings.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Initial dressmaker support.",
+              "subitems": []
+            }
+          ]
+        },
+        {
+          "title": "Improvements",
+          "kind": "improvement",
+          "items": [
+            {
+              "title": "",
+              "description": "Improved webview.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Image carousel improvements.",
+              "subitems": []
+            }
+          ]
+        },
+        {
+          "title": "Bug Fixes",
+          "kind": "fix",
+          "items": [
+            {
+              "title": "",
+              "description": "Dressmaker fixes.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Dressmaker fixes for yuuma.",
+              "subitems": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "v0.5.2",
+      "previousTag": "v0.5.1",
+      "name": "v0.5.2",
+      "headline": "",
+      "publishedAt": "2026-10-17T21:06:26Z",
+      "prerelease": false,
+      "releaseUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/releases/tag/v0.5.2",
+      "compareUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/compare/v0.5.1...v0.5.2",
+      "commitCount": 1,
+      "changeCount": 1,
+      "sections": [
+        {
+          "title": "Bug Fixes",
+          "kind": "fix",
+          "items": [
+            {
+              "title": "",
+              "description": "Further web view fixes.",
+              "subitems": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "v0.5.1",
+      "previousTag": "v0.5.0",
+      "name": "v0.5.1",
+      "headline": "",
+      "publishedAt": "2026-10-17T20:13:22Z",
+      "prerelease": false,
+      "releaseUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/releases/tag/v0.5.1",
+      "compareUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/compare/v0.5.0...v0.5.1",
+      "commitCount": 1,
+      "changeCount": 1,
+      "sections": [
+        {
+          "title": "Bug Fixes",
+          "kind": "fix",
+          "items": [
+            {
+              "title": "",
+              "description": "Webview fixes.",
+              "subitems": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "v0.5.0",
+      "previousTag": "v0.4.5",
+      "name": "v0.5.0",
+      "headline": "",
+      "publishedAt": "2026-10-17T17:53:35Z",
+      "prerelease": false,
+      "releaseUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/releases/tag/v0.5.0",
+      "compareUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/compare/v0.4.5...v0.5.0",
+      "commitCount": 2,
+      "changeCount": 11,
+      "sections": [
+        {
+          "title": "Highlights",
+          "kind": "other",
+          "items": [
+            {
+              "title": "",
+              "description": "CONTROL Resonant is a managed game. Mods deploy to crmods/ and data/CRLooseFiles/ / data/CRMods/; the f2g loader (winmm.dll) is still installed separately.",
+              "subitems": []
+            },
+            {
+              "title": "FromSoftware loaders install on deploy",
+              "description": "Dark Souls (PTDE), Remastered, and Dark Souls 2 merge into <Game>/mod/ and write modengine.ini, pulling legacy Mod Engine when it is missing (GitHub for DS2, Nexus for DS1/DSR, including Download Assist for free accounts). Dark Souls 3 and Elden Ring write emperor.me3 and config_emperor.toml, cache me3 and Mod Engine 2, and add launch_emperor_me3 / launch_emperor_me2 helpers.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Starfield deploy writes StarfieldCustom.ini in My Games so loose files load. Creation Engine deploy skips plugins whose masters are missing and reports those skips.",
+              "subitems": []
+            },
+            {
+              "title": "Nexus requirements are checked for staged mods",
+              "description": "Missing Nexus files, external links, and DLC notes, with a review dialog that can queue the Nexus ones.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Quick install lets you pick the main file and optional extras. Archived and old file versions are collapsed.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Mod pages show the author image carousel. Staged mods get catalog posters, and the chosen file name is shown under the mod title.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Browse has a resizable grid and a compact or poster list.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Downloads keep a persisted recent list (limit is a setting), show the file name, and can open the mod page. Download cache can be cleared without touching active downloads. Deploy warnings use a dismissible status banner.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Steam launch options round-trip escaped quotes, so Proton WINEDLLOVERRIDES values survive a rewrite.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Tool installs can unpack.tar.gz. npm run clean removes Cargo and frontend build artifacts. The Arch installer uses the PKGBUILD from the latest release instead of cloning the repo.",
+              "subitems": []
+            }
+          ]
+        },
+        {
+          "title": "Improvements",
+          "kind": "improvement",
+          "items": [
+            {
+              "title": "",
+              "description": "Update PKGBUILD.",
+              "subitems": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "v0.4.5",
+      "previousTag": "v0.4.0",
+      "name": "v0.4.5",
+      "headline": "",
+      "publishedAt": "2026-09-18T16:41:12Z",
+      "prerelease": false,
+      "releaseUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/releases/tag/v0.4.5",
+      "compareUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/compare/v0.4.0...v0.4.5",
+      "commitCount": 1,
+      "changeCount": 5,
+      "sections": [
+        {
+          "title": "Highlights",
+          "kind": "other",
+          "items": [
+            {
+              "title": "",
+              "description": "Better arch installation.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Initial per mod settings - enables helldivers 2 mod settings support.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Initial sims 3 / 4 support.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Fixes to downloads page.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Improved.",
+              "subitems": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "v0.4.0",
+      "previousTag": "v0.3.0",
+      "name": "v0.4.0",
+      "headline": "",
+      "publishedAt": "2026-09-09T14:36:10Z",
+      "prerelease": false,
+      "releaseUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/releases/tag/v0.4.0",
+      "compareUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/compare/v0.3.0...v0.4.0",
+      "commitCount": 3,
+      "changeCount": 8,
+      "sections": [
+        {
+          "title": "Custom mod collection sharing",
+          "kind": "feature",
+          "items": [
+            {
+              "title": "",
+              "description": "Implemented emperorv1 mod loadout sharing via base64 codes + dedicate page for storing saved loadouts.",
+              "subitems": []
+            }
+          ]
+        },
+        {
+          "title": "Improvements",
+          "kind": "improvement",
+          "items": [
+            {
+              "title": "",
+              "description": "UI/UX improvements.",
+              "subitems": []
+            }
+          ]
+        },
+        {
+          "title": "Highlights",
+          "kind": "other",
+          "items": [
+            {
+              "title": "",
+              "description": "Linux Tools — Install/configure lsfg-vk and AutoHDR-VK, with per-game enable + Steam launch-option sync.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "In-app updates — Check GitHub Releases and install newer builds from Settings.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Game health / relink — Detect moved or missing installs and relink managed games to the new path.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Downloads — Restart / retry stuck or failed downloads, clear recent, remove entries, Assist “Retry opening”.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "BepInEx deploy — Better pack/wrapper detection (Doorstop, nested BepInExPack, plugin layout).",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Legacy migration — One-time merge of managed games from old nexus-manager config; unmanage stays in sync.",
+              "subitems": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "v0.3.0",
+      "previousTag": "v0.2.2",
+      "name": "v0.3.0",
+      "headline": "See desc for changelog",
+      "publishedAt": "2026-08-17T23:10:06Z",
+      "prerelease": false,
+      "releaseUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/releases/tag/v0.3.0",
+      "compareUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/compare/v0.2.2...v0.3.0",
+      "commitCount": 1,
+      "changeCount": 6,
+      "sections": [
+        {
+          "title": "Highlights",
+          "kind": "other",
+          "items": [
+            {
+              "title": "30+ new games",
+              "description": "Witcher 3, Helldivers 2, Kingdom Come 1/2, Monster Hunter, Mount & Blade, Creation Engine (Skyrim/Fallout 4/Starfield/Oblivion Remastered), RimWorld, 7 Days to Die, No Man's Sky, SnowRunner, Space Engineers, Blade & Sorcery, MelonLoader, and many new UE/BepInEx titles.",
+              "subitems": []
+            },
+            {
+              "title": "Collections + Modpacks",
+              "description": "Browse merges Nexus Collections and Thunderstore Modpacks; installed sets are tracked per game for filter/uninstall.",
+              "subitems": []
+            },
+            {
+              "title": "Thunderstore profile import",
+              "description": "Paste r2modman/Gale profile codes to install a full mod list.",
+              "subitems": []
+            },
+            {
+              "title": "Thunderstore dedup",
+              "description": "Keeps only the newest version of each package when resolving dependencies.",
+              "subitems": []
+            },
+            {
+              "title": "Rich text",
+              "description": "Markdown support for mod/collection descriptions.",
+              "subitems": []
+            },
+            {
+              "title": "Catalog UX",
+              "description": "Clearer source-filter errors; collections browse mode hides mod.io.",
+              "subitems": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "v0.2.2",
+      "previousTag": "v0.2.0",
+      "name": "v0.2.2",
+      "headline": "",
+      "publishedAt": "2026-08-16T23:01:12Z",
+      "prerelease": false,
+      "releaseUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/releases/tag/v0.2.2",
+      "compareUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/compare/v0.2.0...v0.2.2",
+      "commitCount": 4,
+      "changeCount": 11,
+      "sections": [
+        {
+          "title": "Mod deployment fixes",
+          "kind": "fix",
+          "items": [
+            {
+              "title": "",
+              "description": "Deploy wrap folders use plugin-resolved names instead of the Nexus display title.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Prefer peeled archive folder names; skip {name}_{modId}_{fileId} staging dirs.",
+              "subitems": []
+            }
+          ]
+        },
+        {
+          "title": "Cyberpunk REDmods wrap as info.json name",
+          "kind": "other",
+          "items": [
+            {
+              "title": "",
+              "description": "Darktide wraps as the root .mod stem (warns on multi-.mod packs).",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Stardew prefers the peeled content folder over the Nexus title.",
+              "subitems": []
+            }
+          ]
+        },
+        {
+          "title": "Other Changes",
+          "kind": "other",
+          "items": [
+            {
+              "title": "",
+              "description": "Checkpoint before checking out main.",
+              "subitems": []
+            }
+          ]
+        },
+        {
+          "title": "Full mod.io + thunderstore integration",
+          "kind": "feature",
+          "items": [
+            {
+              "title": "",
+              "description": "Improvements to image loading, broad game support and mod store support.",
+              "subitems": []
+            }
+          ]
+        },
+        {
+          "title": "Highlights",
+          "kind": "other",
+          "items": [
+            {
+              "title": "Linux",
+              "description": "Fall back to a writable user-cache TMPDIR when /tmp is full/quota’d (avoids GTK abort on icon load).",
+              "subitems": []
+            },
+            {
+              "title": "Linux",
+              "description": "Pin Tauri from git for tao ≥ 0.36 Wayland window fixes.",
+              "subitems": []
+            },
+            {
+              "title": "Windows",
+              "description": "Dedupe Steam/Heroic discovery when path casing/separators differ.",
+              "subitems": []
+            },
+            {
+              "title": "Windows",
+              "description": "Resolve Steam cover art from librarycache (flat + nested layouts).",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Allow resolved cover files through Tauri asset scope so covers load outside $HOME.",
+              "subitems": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "v0.2.0",
+      "previousTag": null,
+      "name": "v0.2.0",
+      "headline": "",
+      "publishedAt": "2026-08-15T20:48:07Z",
+      "prerelease": false,
+      "releaseUrl": "https://github.com/Emperor-of-Modkind/emperor-mod-manager/releases/tag/v0.2.0",
+      "compareUrl": null,
+      "commitCount": 5,
+      "changeCount": 17,
+      "sections": [
+        {
+          "title": "New Features",
+          "kind": "feature",
+          "items": [
+            {
+              "title": "",
+              "description": "Initial commit.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Initial v1.",
+              "subitems": []
+            }
+          ]
+        },
+        {
+          "title": "Windows support ++",
+          "kind": "feature",
+          "items": [
+            {
+              "title": "",
+              "description": "Windows + Linux support (was Linux-only), with platform-specific game detection.",
+              "subitems": []
+            },
+            {
+              "title": "New games",
+              "description": "Days Gone, STALKER 2, Darktide, Dark Souls / Remastered / 2 / 3, Elden Ring, RE7 / Village / Requiem / 2–4 Remake.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Game-specific deploy (paks, Darktide load order + patcher, RE Framework layout, FromSoft mods/ folders, SMAPI/root deploy hooks).",
+              "subitems": []
+            },
+            {
+              "title": "Deploy improvements",
+              "description": "Hardlink/symlink with copy fallback; preflight / staging / after-deploy warnings.",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "Built-in archive extract for zip / 7z / rar (no external unrar required).",
+              "subitems": []
+            },
+            {
+              "title": "Browse upgrades",
+              "description": "Pagination, include/exclude tags, richer mod/collection metadata, game info + collection detail.",
+              "subitems": []
+            }
+          ]
+        },
+        {
+          "title": "Download pause/resume",
+          "kind": "other",
+          "items": [
+            {
+              "title": "",
+              "description": "Rich text rendering for Nexus descriptions (DOMPurify + Vitest).",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "CI release builds for Linux and Windows (.github/workflows/build.yml + build:release).",
+              "subitems": []
+            },
+            {
+              "title": "",
+              "description": "README / docs updated for cross-platform paths, requirements, and new titles.",
+              "subitems": []
+            }
+          ]
+        },
+        {
+          "title": "Bug Fixes",
+          "kind": "fix",
+          "items": [
+            {
+              "title": "",
+              "description": "Build fixes.",
+              "subitems": []
+            }
+          ]
+        },
+        {
+          "title": "Minor fixes + version bump",
+          "kind": "fix",
+          "items": [
+            {
+              "title": "",
+              "description": "CI: publish GitHub releases on main/master pushes (not only v* tags), tagging from package.json version.",
+              "subitems": []
+            },
+            {
+              "title": "Browse",
+              "description": "Fix infinite-scroll offset/dedupe, sentinel rebind after detail back, and failed-append retry.",
+              "subitems": []
+            },
+            {
+              "title": "Browse",
+              "description": "Clearer empty states; reset category/version when switching mods ↔ collections.",
+              "subitems": []
+            },
+            {
+              "title": "Library",
+              "description": "Auto-scan on startup; show only unmanaged games (hide already-managed).",
+              "subitems": []
+            },
+            {
+              "title": "Nexus",
+              "description": "Sort mod files newest-first; fix WILDCARD search (no extra * wrapping).",
+              "subitems": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

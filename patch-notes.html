@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Patch Notes — Emperor Mod Manager</title>
+    <meta
+      name="description"
+      content="Release timeline and end-user patch notes for Emperor Mod Manager, collated from commit history between each release."
+    />
+    <link rel="icon" type="image/png" href="./assets/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      (() => {
+        const saved = localStorage.getItem("emm-site-theme");
+        const dark = saved === "dark" || (!saved && matchMedia("(prefers-color-scheme: dark)").matches);
+        if (dark) document.documentElement.setAttribute("data-theme", "dark");
+      })();
+    </script>
+    <link rel="stylesheet" href="./css/theme.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <script type="module" src="./js/nav.js"></script>
+    <script type="module" src="./js/patch-notes.js"></script>
+  </head>
+  <body>
+    <header class="titlebar">
+      <div class="titlebar-inner">
+        <a class="brand" href="./index.html">
+          <img class="brand-logo" src="./assets/app-logo.png" alt="" width="32" height="32" />
+          <span>Emperor Mod Manager</span>
+        </a>
+
+        <nav class="nav-links" aria-label="Primary" data-nav-links>
+          <a class="nav-link" href="./index.html">Home</a>
+          <a class="nav-link" href="./wiki.html">Wiki</a>
+          <a class="nav-link" href="./patch-notes.html" aria-current="page">Patch Notes</a>
+          <a class="nav-link" href="./downloads.html">Downloads</a>
+        </nav>
+
+        <div class="titlebar-actions">
+          <a
+            class="icon-btn"
+            href="https://github.com/Emperor-of-Modkind/emperor-mod-manager"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
+          <button type="button" class="icon-btn" data-theme-toggle aria-pressed="false" aria-label="Toggle theme">
+            Dark
+          </button>
+          <button
+            type="button"
+            class="icon-btn menu-toggle"
+            data-menu-toggle
+            aria-expanded="false"
+            aria-label="Toggle navigation menu"
+          >
+            Menu
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <div class="page-header">
+          <span class="eyebrow">Changelog</span>
+          <h1>Patch Notes</h1>
+          <p>
+            Every release on a timeline, collated from changes since the previous release and formatted for quick
+            reading.
+          </p>
+        </div>
+
+        <div class="changelog-layout">
+          <aside class="changelog-sidebar" aria-label="Release navigation">
+            <label for="changelog-search" class="sr-only">Filter patch notes</label>
+            <input
+              id="changelog-search"
+              type="search"
+              class="wiki-search"
+              placeholder="Filter releases or changes…"
+              data-changelog-search
+            />
+
+            <div class="changelog-controls">
+              <button
+                type="button"
+                class="btn btn-secondary changelog-toggle-all"
+                data-toggle-all
+                aria-expanded="false"
+                hidden
+              >
+                <span class="label-expand">Expand older releases</span>
+                <span class="label-collapse">Collapse older releases</span>
+              </button>
+            </div>
+
+            <div class="version-toc-wrap">
+              <span class="version-toc-label">Jump to release</span>
+              <ul class="version-toc" data-version-toc></ul>
+            </div>
+          </aside>
+
+          <div class="changelog-main">
+            <div class="changelog-status-bar" data-changelog-status aria-live="polite">
+              Loading release timeline…
+            </div>
+
+            <ol class="timeline" data-timeline aria-label="Release timeline">
+              <li class="status-note">Loading patch notes…</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <span>Emperor Mod Manager &mdash; Licensed under AGPL-3.0-or-later</span>
+        <div class="footer-links">
+          <a href="./index.html">Home</a>
+          <a href="./wiki.html">Wiki</a>
+          <a href="./patch-notes.html">Patch Notes</a>
+          <a href="./downloads.html">Downloads</a>
+          <a href="https://github.com/Emperor-of-Modkind/emperor-mod-manager" target="_blank" rel="noopener noreferrer">
+            GitHub Repository
+          </a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

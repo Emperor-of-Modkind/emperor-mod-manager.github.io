@@ -47,10 +47,18 @@ jobs:
             echo "::warning::Failed to fetch latest release from GitHub API; keeping committed data/latest-release.json."
           fi
 
+      - name: Refresh patch notes manifest (stable only)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if ! node scripts/build-patch-notes.mjs --output data/patch-notes.json; then
+            echo "::warning::Failed to refresh patch notes from GitHub API; keeping committed data/patch-notes.json."
+          fi
+
       - name: Assemble static site artifact
         run: |
           mkdir -p _site
-          cp index.html downloads.html wiki.html _site/
+          cp index.html downloads.html wiki.html patch-notes.html _site/
           cp -r assets css js data _site/
 
       - name: Upload Pages artifact
