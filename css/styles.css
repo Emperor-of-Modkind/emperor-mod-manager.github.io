@@ -553,6 +553,11 @@ main {
   grid-area: 1 / 1;
 }
 
+.platform-panel[hidden] {
+  align-self: start;
+  pointer-events: none;
+}
+
 .platform-panel-inner {
   display: flex;
   flex-direction: column;
