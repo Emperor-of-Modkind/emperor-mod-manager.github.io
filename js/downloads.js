@@ -1,5 +1,5 @@
 // Dynamic Downloads page: loads GitHub Actions manifest (with live GitHub API fallback)
-// and drives the accessible Windows / Linux platform switcher.
+// and drives the accessible Windows / Linux / Mobile App platform switcher.
 
 const REPO = "Emperor-of-Modkind/emperor-mod-manager";
 const MANIFEST_URL = "./data/latest-release.json";
@@ -35,8 +35,14 @@ function detectInitialPlatform() {
   if (queryPlatform === "windows" || queryPlatform === "linux") {
     return queryPlatform;
   }
+  if (queryPlatform === "mobile" || queryPlatform === "android") {
+    return "mobile";
+  }
 
   const uaPlatform = (navigator.userAgentData?.platform || navigator.platform || navigator.userAgent || "").toLowerCase();
+  if (uaPlatform.includes("android") || (navigator.userAgent || "").toLowerCase().includes("android")) {
+    return "mobile";
+  }
   if (uaPlatform.includes("linux") || uaPlatform.includes("x11")) {
     return "linux";
   }
@@ -46,6 +52,7 @@ function detectInitialPlatform() {
 function normalizeLiveRelease(release) {
   const windows = [];
   const linux = [];
+  const mobile = [];
   const checksums = [];
 
   for (const asset of release.assets || []) {
@@ -123,11 +130,49 @@ function normalizeLiveRelease(release) {
         recommended: false,
         order: 5,
       });
+    } else if (lower.endsWith(".apk")) {
+      if (lower.includes("arm64") || lower.includes("aarch64")) {
+        mobile.push({
+          ...base,
+          label: "Android App (ARM64 .apk)",
+          description: "For most modern 64-bit Android phones and tablets.",
+          recommended: false,
+          order: 2,
+        });
+      } else if (lower.includes("armeabi") || lower.includes("armv7")) {
+        mobile.push({
+          ...base,
+          label: "Android App (ARMv7 .apk)",
+          description: "For older 32-bit ARM Android devices.",
+          recommended: false,
+          order: 3,
+        });
+      } else if (lower.includes("x86_64") || lower.includes("x86")) {
+        mobile.push({
+          ...base,
+          label: "Android App (x86 .apk)",
+          description: "For x86 / x86_64 Android devices and emulators.",
+          recommended: false,
+          order: 4,
+        });
+      } else {
+        mobile.push({
+          ...base,
+          label: "Android App (.apk)",
+          description: "Recommended. Install directly on Android devices.",
+          recommended: true,
+          order: 1,
+        });
+      }
     }
   }
 
   windows.sort((a, b) => a.order - b.order);
   linux.sort((a, b) => a.order - b.order);
+  mobile.sort((a, b) => a.order - b.order);
+  if (mobile.length > 0 && !mobile.some((item) => item.recommended)) {
+    mobile[0].recommended = true;
+  }
 
   return {
     repo: REPO,
@@ -135,7 +180,7 @@ function normalizeLiveRelease(release) {
     name: release.name || release.tag_name,
     publishedAt: release.published_at || release.created_at || null,
     releaseUrl: release.html_url || FALLBACK_RELEASES_URL,
-    platforms: { windows, linux },
+    platforms: { windows, linux, mobile },
     checksums,
   };
 }
@@ -239,6 +284,36 @@ function renderPlatformAssets(container, assets, releaseUrl) {
   }
 }
 
+function renderMobileAssets(container, instructionsEl, assets) {
+  container.replaceChildren();
+  if (!assets || assets.length === 0) {
+    if (instructionsEl) instructionsEl.hidden = true;
+
+    const card = document.createElement("div");
+    card.className = "coming-soon-card";
+
+    const badge = document.createElement("span");
+    badge.className = "pill pill-accent";
+    badge.textContent = "Coming Soon";
+
+    const title = document.createElement("h2");
+    title.textContent = "Mobile App — Coming Soon";
+
+    const desc = document.createElement("p");
+    desc.textContent =
+      "The Android mobile version of Emperor Mod Manager is currently in development. Once an APK is published in GitHub Releases, the direct download link will appear here automatically.";
+
+    card.append(badge, title, desc);
+    container.appendChild(card);
+    return;
+  }
+
+  for (const asset of assets) {
+    container.appendChild(createAssetCard(asset));
+  }
+  if (instructionsEl) instructionsEl.hidden = false;
+}
+
 function setupPlatformTabs() {
   const tablist = document.querySelector("[data-platform-tablist]");
   const panelsContainer = document.querySelector("[data-platform-panels]");
@@ -309,6 +384,8 @@ async function initDownloads() {
   const checksumLink = document.querySelector("[data-checksums-link]");
   const windowsList = document.querySelector('[data-asset-list="windows"]');
   const linuxList = document.querySelector('[data-asset-list="linux"]');
+  const mobileList = document.querySelector('[data-asset-list="mobile"]');
+  const mobileInstructions = document.querySelector("[data-mobile-instructions]");
 
   try {
     const release = await fetchReleaseData();
@@ -330,6 +407,7 @@ async function initDownloads() {
 
     if (windowsList) renderPlatformAssets(windowsList, release.platforms.windows, release.releaseUrl);
     if (linuxList) renderPlatformAssets(linuxList, release.platforms.linux, release.releaseUrl);
+    if (mobileList) renderMobileAssets(mobileList, mobileInstructions, release.platforms.mobile);
   } catch (err) {
     if (versionEl) versionEl.textContent = "Latest Release";
     if (dateEl) dateEl.textContent = "Couldn't load release info automatically.";
@@ -351,6 +429,8 @@ async function initDownloads() {
 
     renderError(windowsList);
     renderError(linuxList);
+    renderError(mobileList);
+    if (mobileInstructions) mobileInstructions.hidden = true;
     console.error("Failed to load release manifest:", err);
   }
 }

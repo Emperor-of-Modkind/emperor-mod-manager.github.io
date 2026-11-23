@@ -6,7 +6,7 @@
     <title>Downloads — Emperor Mod Manager</title>
     <meta
       name="description"
-      content="Download Emperor Mod Manager for Windows and Linux, plus install instructions for each platform."
+      content="Download Emperor Mod Manager for Windows, Linux, and Android mobile, plus install instructions for each platform."
     />
     <link rel="icon" type="image/png" href="./assets/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -73,7 +73,7 @@
           <span class="eyebrow">Releases</span>
           <h1>Download Emperor Mod Manager</h1>
           <p>
-            Pick your OS below for direct links to the latest GitHub release and install instructions.
+            Pick your platform below for direct links to the latest GitHub release and install instructions.
           </p>
         </div>
 
@@ -138,6 +138,16 @@
                 aria-selected="false"
               >
                 Linux
+              </button>
+              <button
+                type="button"
+                role="tab"
+                id="tab-mobile"
+                class="platform-tab"
+                data-platform="mobile"
+                aria-selected="false"
+              >
+                Mobile App
               </button>
             </div>
 
@@ -245,6 +255,37 @@ makepkg -si</code></pre>
                       In-app updates replace the AppImage in place, update <code>.deb</code> installs through
                       <code>apt</code>, or swap out user-writable binaries from the release tarball.
                     </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Mobile App Panel -->
+              <div
+                class="platform-panel"
+                role="tabpanel"
+                id="panel-mobile"
+                aria-labelledby="tab-mobile"
+                data-platform-panel="mobile"
+                hidden="until-found"
+              >
+                <div class="platform-panel-inner">
+                  <div class="asset-list" data-asset-list="mobile">
+                    <div class="status-note">Loading Mobile App downloads…</div>
+                  </div>
+
+                  <div class="instructions-box" data-mobile-instructions hidden>
+                    <h2>Installing on Android</h2>
+                    <p>Download the <code>.apk</code> package above directly on your Android device.</p>
+
+                    <ol>
+                      <li>Tap the <strong>Download</strong> button above to save the <code>.apk</code> file.</li>
+                      <li>Open the downloaded <code>.apk</code> from your browser downloads or Files app.</li>
+                      <li>
+                        If prompted, allow your browser or Files app to <strong>Install unknown apps</strong> in
+                        Android settings.
+                      </li>
+                      <li>Confirm the installation and launch <strong>Emperor Mod Manager</strong>.</li>
+                    </ol>
                   </div>
                 </div>
               </div>

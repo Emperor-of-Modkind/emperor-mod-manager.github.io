@@ -149,6 +149,56 @@ export function classifyAsset(asset) {
     };
   }
 
+  // Android / Mobile APK
+  if (lower.endsWith(".apk")) {
+    if (lower.includes("arm64") || lower.includes("aarch64")) {
+      return {
+        bucket: "mobile",
+        item: {
+          ...base,
+          label: "Android App (ARM64 .apk)",
+          description: "For most modern 64-bit Android phones and tablets.",
+          recommended: false,
+          order: 2,
+        },
+      };
+    }
+    if (lower.includes("armeabi") || lower.includes("armv7")) {
+      return {
+        bucket: "mobile",
+        item: {
+          ...base,
+          label: "Android App (ARMv7 .apk)",
+          description: "For older 32-bit ARM Android devices.",
+          recommended: false,
+          order: 3,
+        },
+      };
+    }
+    if (lower.includes("x86_64") || lower.includes("x86")) {
+      return {
+        bucket: "mobile",
+        item: {
+          ...base,
+          label: "Android App (x86 .apk)",
+          description: "For x86 / x86_64 Android devices and emulators.",
+          recommended: false,
+          order: 4,
+        },
+      };
+    }
+    return {
+      bucket: "mobile",
+      item: {
+        ...base,
+        label: "Android App (.apk)",
+        description: "Recommended. Install directly on Android devices.",
+        recommended: true,
+        order: 1,
+      },
+    };
+  }
+
   return null;
 }
 
@@ -160,6 +210,7 @@ export function buildManifest(release) {
   const buckets = {
     windows: [],
     linux: [],
+    mobile: [],
     checksums: [],
   };
 
@@ -172,6 +223,10 @@ export function buildManifest(release) {
 
   buckets.windows.sort((a, b) => a.order - b.order);
   buckets.linux.sort((a, b) => a.order - b.order);
+  buckets.mobile.sort((a, b) => a.order - b.order);
+  if (buckets.mobile.length > 0 && !buckets.mobile.some((item) => item.recommended)) {
+    buckets.mobile[0].recommended = true;
+  }
 
   const stripOrder = ({ order, ...rest }) => rest;
 
@@ -188,6 +243,7 @@ export function buildManifest(release) {
     platforms: {
       windows: buckets.windows.map(stripOrder),
       linux: buckets.linux.map(stripOrder),
+      mobile: buckets.mobile.map(stripOrder),
     },
     checksums: buckets.checksums.map(stripOrder),
   };

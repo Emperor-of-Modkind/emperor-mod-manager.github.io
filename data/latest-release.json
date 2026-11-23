@@ -82,7 +82,8 @@
         "description": "Raw x86_64 binary.",
         "recommended": false
       }
-    ]
+    ],
+    "mobile": []
   },
   "checksums": [
     {
