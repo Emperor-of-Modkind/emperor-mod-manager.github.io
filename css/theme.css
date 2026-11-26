@@ -17,6 +17,7 @@
   --shape-field: 0.9rem;
   --shape-sheet: 1.75rem;
   --surface-control: color-mix(in srgb, var(--ink) 8%, var(--bg));
+  --surface-control-hover: color-mix(in srgb, var(--ink) 12%, var(--bg));
   --surface-selected: var(--accent);
   --focus-ring: 0 0 0 3px color-mix(in srgb, var(--accent) 28%, transparent);
   --danger: #9b2c2c;
@@ -25,13 +26,14 @@
   --input-bg: #fff;
   --danger-bg: #f8e4e4;
   --danger-line: #e7bcbc;
+  --warn-bg: color-mix(in srgb, var(--warn) 14%, transparent);
   --ok-bg: #e4f1ec;
   --ok-line: #b9d7ce;
   --shadow: 0 10px 30px rgba(40, 30, 15, 0.08);
   --motion-fast: 220ms;
   --motion-base: 320ms;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-  --badge-bg: rgba(20, 24, 22, 0.78);
+  --badge-bg: rgba(20, 24, 22, 0.72);
   --badge-ink: #f4efe7;
   --sidebar-bg: #e4d9ca;
   --sidebar-ink: #1c1915;
@@ -45,7 +47,7 @@
   --font-mono: ui-monospace, "JetBrains Mono", "Cascadia Code", Menlo, Consolas, monospace;
 
   font-family: var(--font-sans);
-  line-height: 1.5;
+  line-height: 1.45;
   font-weight: 450;
   color: var(--ink);
   background: var(--bg);
@@ -72,10 +74,11 @@
   --input-bg: #1a201d;
   --danger-bg: #3a2424;
   --danger-line: #6a3c3c;
+  --warn-bg: color-mix(in srgb, var(--warn) 16%, transparent);
   --ok-bg: #1e332c;
   --ok-line: #35584c;
   --shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
-  --badge-bg: rgba(8, 10, 9, 0.82);
+  --badge-bg: rgba(8, 10, 9, 0.78);
   --badge-ink: #f4efe7;
   --sidebar-bg: #1a2320;
   --sidebar-ink: #f4efe7;
